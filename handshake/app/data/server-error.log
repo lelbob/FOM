@@ -1,0 +1,70 @@
+127.0.0.1 - - [22/Oct/2026 18:49:58] "GET /index.html?mobile=1 HTTP/1.1" 500 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 59420)
+Traceback (most recent call last):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\socketserver.py", line 691, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "C:\Users\user\OneDrive\Documents\ChatGPT\event 4\handshake\app\server.py", line 561, in __init__
+    def __init__(self,*args,**kwargs): super().__init__(*args,directory=str(PUBLIC),**kwargs)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\http\server.py", line 671, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\socketserver.py", line 755, in __init__
+    self.handle()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\http\server.py", line 436, in handle
+    self.handle_one_request()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\http\server.py", line 424, in handle_one_request
+    method()
+  File "C:\Users\user\OneDrive\Documents\ChatGPT\event 4\handshake\app\server.py", line 588, in do_GET
+    if hasattr(self,'pending_response'):self.respond(*self.pending_response)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\OneDrive\Documents\ChatGPT\event 4\handshake\app\server.py", line 578, in respond
+    self.end_headers();self.wfile.write(data)
+    ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\OneDrive\Documents\ChatGPT\event 4\handshake\app\server.py", line 569, in end_headers
+    super().end_headers()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\http\server.py", line 538, in end_headers
+    self.flush_headers()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\http\server.py", line 542, in flush_headers
+    self.wfile.write(b"".join(self._headers_buffer))
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\socketserver.py", line 834, in write
+    self._sock.sendall(b)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+127.0.0.1 - - [22/Oct/2026 18:51:16] "GET /index.html?mobile=1 HTTP/1.1" 500 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 56445)
+Traceback (most recent call last):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\socketserver.py", line 691, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "C:\Users\user\OneDrive\Documents\ChatGPT\event 4\handshake\app\server.py", line 561, in __init__
+    def __init__(self,*args,**kwargs): super().__init__(*args,directory=str(PUBLIC),**kwargs)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\http\server.py", line 671, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\socketserver.py", line 755, in __init__
+    self.handle()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\http\server.py", line 436, in handle
+    self.handle_one_request()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\http\server.py", line 424, in handle_one_request
+    method()
+  File "C:\Users\user\OneDrive\Documents\ChatGPT\event 4\handshake\app\server.py", line 588, in do_GET
+    if hasattr(self,'pending_response'):self.respond(*self.pending_response)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\OneDrive\Documents\ChatGPT\event 4\handshake\app\server.py", line 578, in respond
+    self.end_headers();self.wfile.write(data)
+    ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\OneDrive\Documents\ChatGPT\event 4\handshake\app\server.py", line 569, in end_headers
+    super().end_headers()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\http\server.py", line 538, in end_headers
+    self.flush_headers()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\http\server.py", line 542, in flush_headers
+    self.wfile.write(b"".join(self._headers_buffer))
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\socketserver.py", line 834, in write
+    self._sock.sendall(b)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------

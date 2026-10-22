@@ -1,0 +1,5 @@
+Handshake: http://127.0.0.1:8800
+Local simulation only. Staff accounts: support, operations, finance-a, finance-b.
+See README.md for the demo password and recovery instructions.
+GET error: ConnectionAbortedError(10053, 'An established connection was aborted by the software in your host machine', None, 10053, None)
+GET error: ConnectionAbortedError(10053, 'An established connection was aborted by the software in your host machine', None, 10053, None)

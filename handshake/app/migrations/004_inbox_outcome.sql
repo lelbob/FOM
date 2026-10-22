@@ -1,0 +1,1 @@
+ALTER TABLE provider_inbox ADD COLUMN http_status INTEGER NOT NULL DEFAULT 409;

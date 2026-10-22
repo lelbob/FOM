@@ -1,0 +1,13 @@
+ALTER TABLE jobs ADD COLUMN instruction TEXT;
+ALTER TABLE jobs ADD COLUMN attempts INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE jobs ADD COLUMN last_error TEXT;
+ALTER TABLE proposals ADD COLUMN snapshot TEXT;
+CREATE TABLE provider_instructions(reference TEXT PRIMARY KEY, job_id TEXT NOT NULL UNIQUE, instruction_hash TEXT NOT NULL, outcome TEXT NOT NULL, created INTEGER NOT NULL);
+CREATE TABLE provider_inbox(id INTEGER PRIMARY KEY AUTOINCREMENT, event_id TEXT NOT NULL, receipt_id TEXT NOT NULL, record_id TEXT NOT NULL, payload_hash TEXT NOT NULL, payload TEXT NOT NULL, disposition TEXT NOT NULL, reason TEXT NOT NULL, recovery_id TEXT, created INTEGER NOT NULL, UNIQUE(event_id,payload_hash));
+CREATE TABLE receipt_claims(receipt_id TEXT PRIMARY KEY, event_id TEXT NOT NULL UNIQUE, payload_hash TEXT NOT NULL, record_id TEXT NOT NULL, amount INTEGER NOT NULL, recovery_id TEXT);
+CREATE TRIGGER no_inbox_update BEFORE UPDATE ON provider_inbox BEGIN SELECT RAISE(ABORT,'Provider inbox is append-only'); END;
+CREATE TRIGGER no_inbox_delete BEFORE DELETE ON provider_inbox BEGIN SELECT RAISE(ABORT,'Provider inbox is append-only'); END;
+CREATE TRIGGER immutable_instruction BEFORE UPDATE OF instruction,reference,record_id,type ON jobs WHEN OLD.instruction IS NOT NULL BEGIN SELECT RAISE(ABORT,'Financial instruction is immutable'); END;
+CREATE TRIGGER no_job_delete BEFORE DELETE ON jobs BEGIN SELECT RAISE(ABORT,'Financial jobs cannot be deleted'); END;
+CREATE TRIGGER no_callback_update BEFORE UPDATE ON callbacks BEGIN SELECT RAISE(ABORT,'Receipts are append-only'); END;
+CREATE TRIGGER no_callback_delete BEFORE DELETE ON callbacks BEGIN SELECT RAISE(ABORT,'Receipts are append-only'); END;
