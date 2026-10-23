@@ -1,0 +1,7 @@
+{
+  "rule": "Exactly one targeted revision for any case below 7; no second redo",
+  "revisions": [
+    {"id":"escrow-arrived","initial_score":6.8,"redo_count":1,"change":"Use a 14px grid gap and scale compact art to 0.7 from its left edge, preserving clear text space at 320px."},
+    {"id":"shop-shop","initial_score":6.8,"redo_count":1,"change":"Use a 14px grid gap and scale compact art to 0.7 from its left edge, preserving clear text space at 320px."}
+  ]
+}

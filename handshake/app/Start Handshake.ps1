@@ -5,7 +5,7 @@ $taskUrl = "http://127.0.0.1:$taskPort"
 try {
     $taskExisting = Invoke-WebRequest -Uri "$taskUrl/api/session" -TimeoutSec 2
     if ($taskExisting.Headers.Server -notmatch 'Handshake/') { throw 'Port is occupied by another service.' }
-    Write-Output "Handshake is already running: $taskUrl/#home"
+    Write-Output "FOM is already running: $taskUrl/#home"
     exit 0
 } catch {
     if ($_.Exception.Message -eq 'Port is occupied by another service.') { throw }
@@ -20,9 +20,9 @@ for ($taskAttempt = 0; $taskAttempt -lt 20; $taskAttempt++) {
     try {
         $taskReady = Invoke-WebRequest -Uri "$taskUrl/api/session" -TimeoutSec 1
         if ($taskReady.StatusCode -eq 200 -and $taskReady.Headers.Server -match 'Handshake/') {
-            Write-Output "Handshake is running: $taskUrl/#home"
+            Write-Output "FOM is running: $taskUrl/#home"
             exit 0
         }
     } catch { Start-Sleep -Milliseconds 200 }
 }
-throw "Handshake did not become ready. See $taskLogs/server-error.log."
+throw "FOM did not become ready. See $taskLogs/server-error.log."

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#afb5ff">
+  <meta name="description" content="FOM — Future of Myanmar — protected deals and simple payment acceptance. Local working simulator.">
+  <title>FOM — Future of Myanmar · Home</title>
+  <link rel="icon" href="/assets/soft-elephant.png">
+  <link rel="stylesheet" href="/app.css?v=mobile-2"><link rel="stylesheet" href="/mascot.css?v=3"><link rel="stylesheet" href="/mobile-app.css?v=fom-1">
+  <link rel="stylesheet" href="/escrow-theme.css?v=2"><link rel="stylesheet" href="/ui-refinement.css?v=3">
+  <script defer src="/escrow-motion.js?v=2"></script>
+  <script defer src="/vendor/jsQR.js"></script><script defer src="/receipt-app.js?v=scan-restored-3"></script>
+</head>
+<body class="customer-app receipt-app">
+<header class="app-header"><a class="brand" href="#home" aria-label="FOM home"><span class="fom-symbol" aria-hidden="true"><i></i><i></i></span><span>fom<span class="brand-dot">.</span></span></a><a class="header-profile" href="#profile" aria-label="Your profile"><span class="profile-avatar">Y</span></a></header>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#home"><span class="fom-symbol" aria-hidden="true"><i></i><i></i></span>fom.</a>
+      <nav>
+        <a href="#home" data-nav="home"><span aria-hidden="true">⌂</span> Home</a>
+        <a href="#activity" data-nav="activity"><span aria-hidden="true">↗</span> Your activity</a>
+        <a href="#code" data-nav="code"><span aria-hidden="true">⌗</span> Enter a code</a>
+      </nav>
+      <div class="sidebar-bottom"><a href="#access" data-nav="access">Private access</a><a href="#help" data-nav="help">How it works</a><a href="#admin" data-nav="admin">Staff workspace <span aria-hidden="true">↗</span></a><p>Two ways to move forward.<br>A little more peace of mind.</p></div>
+    </aside>
+    <main id="app" tabindex="-1" aria-live="polite"><div class="loading">Opening FOM…</div></main>
+  </div>
+  <nav class="app-tabs" aria-label="Main navigation">
+    <a href="#home" data-tab="home"><span aria-hidden="true">⌂</span><span>Home</span></a>
+    <a href="#escrow" data-tab="escrow"><span aria-hidden="true">↔</span><span>Escrow</span></a>
+    <a href="#payment" data-tab="payment"><span aria-hidden="true">↗</span><span>Cross banking</span></a>
+    <a href="#code" data-tab="code"><span aria-hidden="true">⌗</span><span>Enter code</span></a>
+  </nav>
+  <div id="toast" role="status"></div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+/* Earned, finite moments. All status and controls are visible before motion. */
+.moment-panel{display:grid;grid-template-columns:135px minmax(0,1fr);gap:7px;align-items:center;position:relative;isolation:isolate;min-height:142px;margin:0 0 22px;padding:8px 15px 8px 2px;border:1px solid #e1e8f4;border-radius:24px;background:#f0f4fc;text-align:left;overflow:hidden}
+.moment-art{height:126px;position:relative;min-width:0;isolation:isolate;pointer-events:none}
+.moment-halo{position:absolute;width:112px;height:97px;left:12px;top:15px;border-radius:47% 53% 48% 52%;background:#dce7fd;z-index:-1}
+.moment-elephant{position:absolute;width:104px;height:99px;object-fit:contain;left:22px;bottom:9px;transform-origin:50% 88%;z-index:2}
+.moment-ground{position:absolute;width:69px;height:8px;border-radius:50%;background:#b7c9e65c;left:40px;bottom:10px}
+.moment-copy{position:relative;z-index:3;min-width:0}
+.moment-copy .moment-eyebrow{font-size:8px;font-weight:800;letter-spacing:1.1px;color:#6e86b6;margin:0 0 7px;text-transform:uppercase}
+.receipt-app .moment-copy h2{font-size:20px;font-weight:800;line-height:1.2;letter-spacing:-.6px;color:#3c5e9d;margin:0 0 8px;overflow-wrap:anywhere}
+.moment-copy p:last-child{font-size:10px;line-height:1.65;color:#74819a;margin:0;text-wrap:pretty}
+.moment-object{position:absolute;width:34px;height:42px;left:8px;top:19px;background:#fffdf8;border:1px solid #cad7ef;border-radius:7px;box-shadow:0 3px 0 #b7c9e652;transform:rotate(-12deg);z-index:3}
+.moment-object:before,.moment-object:after{content:'';position:absolute;height:3px;border-radius:3px;background:#bdceef;left:7px;right:7px;top:12px}
+.moment-object:after{top:20px;right:11px}
+.moment-mark{display:grid;place-items:center;position:absolute;width:27px;height:27px;border:3px solid #fffdf8;border-radius:50%;background:#dcebdd;bottom:13px;right:5px;color:#56795d;font-size:14px;font-weight:800;z-index:4}
+.moment-ring{position:absolute;width:76px;height:76px;border:2px solid #a8bfef;border-radius:50%;left:31px;top:30px;opacity:0;z-index:-1}
+.moment-spark{position:absolute;width:5px;height:13px;border-radius:3px;background:#99b5ec;left:65px;top:55px;opacity:0;z-index:4}
+.moment-spark:nth-of-type(even){background:#edc0a0;width:7px;height:7px;border-radius:50%}
+.moment-half{position:absolute;width:30px;height:34px;border:1px solid #adc4ee;border-radius:8px;background:#e6eefc;top:19px;left:10px;z-index:3;transform:rotate(-12deg)}
+.moment-half+ .moment-half{left:31px;background:#fffdf8;transform:rotate(10deg)}
+.moment-join{min-height:103px;grid-template-columns:103px minmax(0,1fr);margin-bottom:20px}
+.moment-join .moment-art{height:98px;transform:scale(.8);transform-origin:50% 50%}
+.moment-join .moment-copy h2{font-size:18px}
+.moment-dispatch .moment-object{height:31px;top:29px;background:#edd6bd;border-color:#d0b89f;border-radius:5px;transform:rotate(-7deg)}
+.moment-dispatch .moment-object:before{width:8px;height:29px;top:0;left:12px;background:#f8e7d4;border-radius:0}
+.moment-dispatch .moment-object:after{height:1px;top:11px;left:0;right:0;background:#d5baa1}
+.moment-arrived{min-height:109px;grid-template-columns:103px minmax(0,1fr);background:#f3f4ed;border-color:#e5e7dc}
+.moment-arrived .moment-art{height:100px;transform:scale(.8);transform-origin:50% 50%}
+.moment-arrived .moment-halo{background:#e6ead8}
+.moment-arrived .moment-object{width:30px;height:30px;border-radius:50%;background:#fffdf8;top:24px}
+.moment-arrived .moment-object:before{width:10px;height:10px;left:9px;top:9px;right:auto;border-radius:50%;background:#aabb90}
+.moment-arrived .moment-object:after{display:none}
+.moment-shop{background:#f6efe7;border-color:#ebe0d4;min-height:109px;grid-template-columns:103px minmax(0,1fr)}
+.moment-shop .moment-art{height:100px;transform:scale(.8);transform-origin:50% 50%}
+.moment-complete{grid-template-columns:1fr;gap:0;padding:6px 24px 25px;background:#edf2fc;text-align:center;margin:0 0 24px}
+.moment-complete .moment-art{height:142px;width:200px;margin:auto}
+.moment-complete .moment-halo{width:155px;height:111px;left:23px;top:21px;background:#dfe8fa}
+.moment-complete .moment-elephant{width:139px;height:127px;left:32px;bottom:6px}
+.moment-complete .moment-ground{width:98px;left:53px;bottom:8px}
+.moment-complete .moment-object{left:18px;top:35px}
+.moment-complete .moment-mark{right:24px;bottom:12px;width:35px;height:35px;font-size:18px}
+.moment-complete .moment-ring{width:115px;height:115px;left:43px;top:20px}
+.moment-complete .moment-spark{left:96px;top:61px}
+.receipt-app .moment-complete .moment-copy h2{font-size:25px;letter-spacing:-.8px}
+.moment-complete .moment-copy p:last-child{font-size:11px;max-width:240px;margin:auto}
+.receipt-app .page-head:has(+.flow-card>.moment-panel) .mascot-stage,.receipt-app .page-head:has(+section>.moment-panel) .mascot-stage{visibility:hidden}
+.receipt-app .flow-card:has(>.moment-panel)>.mascot-stage,.receipt-app .flow-card:has(>.moment-panel)>.state-caption{display:none}
+.receipt-app .moment-panel+.escrow-item{margin-top:0}
+.moment-row-arrival{outline:2px solid #bacdf1;outline-offset:-2px}
+.moment-arrived,.moment-shop{gap:14px}
+.moment-arrived .moment-art,.moment-shop .moment-art{transform:scale(.7);transform-origin:0 50%}
+@media(max-width:360px){.moment-panel{grid-template-columns:115px minmax(0,1fr);padding-right:12px}.moment-art{transform:scale(.9);transform-origin:left center}.receipt-app .moment-copy h2{font-size:18px}.moment-complete{grid-template-columns:1fr}.moment-complete .moment-art{transform:none}.moment-join,.moment-arrived,.moment-shop{grid-template-columns:95px minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){.moment-spark,.moment-ring{display:none}}
+@media print{.moment-art{display:none}.moment-panel{display:block;min-height:0}}

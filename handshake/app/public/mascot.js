@@ -22,5 +22,3 @@ class SoftElephant extends HTMLElement{
 }
 customElements.define('soft-elephant',SoftElephant);window.SoftElephant=SoftElephant;
 })();
-
-

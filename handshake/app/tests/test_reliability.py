@@ -141,7 +141,7 @@ class Reliability(IntegrationHarness):
             app.initialize();app.initialize()
             self.assertEqual(self.get(r)['state'],'awaiting_buyer')
             with app.connection() as db:
-                self.assertEqual(db.execute('SELECT COUNT(*) FROM schema_migrations').fetchone()[0],4)
+                self.assertEqual(db.execute('SELECT COUNT(*) FROM schema_migrations').fetchone()[0],len(list((app.ROOT/'migrations').glob('*.sql'))))
                 self.assertEqual(db.execute('PRAGMA integrity_check').fetchone()[0],'ok')
         finally:app.DB=previous
 

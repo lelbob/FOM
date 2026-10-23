@@ -3,7 +3,7 @@ import hashlib
 import hmac
 
 class SimulatedProvider:
-    capabilities={'collection':True,'status':True,'payout':True,'refund':True,'live':False}
+    capabilities={'collection':True,'status':True,'payout':True,'refund':True,'settlement':True,'settlement_reporting':True,'escrow_hold':True,'escrow_release':True,'escrow_freeze':True,'hosted_checkout':True,'bank_payment_qr':False,'live':False}
     @staticmethod
     def verify_callback(secret, raw, signature):
         expected=hmac.new(secret.encode(),raw,hashlib.sha256).hexdigest()
@@ -42,6 +42,7 @@ class SimulatedProvider:
         """Worker boundary: initial dispatch and later status use separate capabilities."""
         prior=db.execute('SELECT 1 FROM provider_instructions WHERE reference=?',(job['reference'],)).fetchone()
         if prior: return SimulatedProvider.query_instruction(db,job,scenario,created)
+        if job['type']=='settlement': return SimulatedProvider._record_instruction(db,job,scenario,created)
         submit=SimulatedProvider.submit_refund if job['type']=='refund' else SimulatedProvider.submit_payout
         return submit(db,job,scenario,created)
 

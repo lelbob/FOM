@@ -1,0 +1,97 @@
+{
+  "review": "Independent motion critic — pass 1",
+  "date": "2026-10-23",
+  "threshold": 7,
+  "revisionRule": "Below 7 receives exactly one targeted revision, followed by one final rating. Accepted cases receive no required revision.",
+  "method": {
+    "url": "http://127.0.0.1:8821/studio.html",
+    "browser": "Owned background tab via mcp__cua_repl",
+    "replays": "All 10 cases replayed at normal and slow speed; each inspected with Freeze mid-motion.",
+    "viewports": "390×844 phone for all cases; 320×812 compact phone for representative normal states and all reduced-motion cases.",
+    "reducedMotion": "Opened harness Reduced motion link (?motion=reduce), replayed all 10 cases. Visible result retained the static illustration/copy rather than the normal traveling props. No horizontal document overflow at 320px in any case.",
+    "interaction": "KPay selected during slow escrow-join replay. Switching cases replaced the previous state without an overlay or stranded controls. Harness scene switching was checked; real application route interruption was not independently repeated."
+  },
+  "cases": [
+    {
+      "id": "escrow-create",
+      "score": 7.4,
+      "status": "accepted",
+      "observation": "A paper cue arrives beside the whole-image mascot, then the check and stable sharing card leave the QR and actions as the task focus. Blue/ivory styling fits the app. Familiar rather than distinctive choreography."
+    },
+    {
+      "id": "payment-create",
+      "score": 7.4,
+      "status": "accepted",
+      "observation": "The same ready-to-share grammar appropriately confirms creation of a request. Copy says the link/code are ready and does not claim a transfer. Phone content remains readable."
+    },
+    {
+      "id": "escrow-join",
+      "score": 7.2,
+      "status": "accepted",
+      "observation": "A compact connection cue supports the newly joined deal and the next payment-method step. The card stays out of the controls; KPay could be selected during slow replay. Small prop motion carries more meaning than the mascot bounce."
+    },
+    {
+      "id": "payment-join",
+      "score": 7,
+      "status": "accepted",
+      "observation": "Restrained opened-request feedback keeps the method choice visible and states the next action clearly. A success check is a fairly generic treatment for opening a request, but the adjacent copy prevents a payment-success claim."
+    },
+    {
+      "id": "escrow-receipt",
+      "score": 7.2,
+      "status": "accepted",
+      "observation": "The moving paper makes the saved-submission event legible. 'Payment is not verified' stays readable, including at 320px. The shared check/bounce vocabulary is polished enough but adds little distinction from creation."
+    },
+    {
+      "id": "payment-receipt",
+      "score": 7.2,
+      "status": "accepted",
+      "observation": "Submission wording and the explicit unverified-payment message are clear. No blocking overlay or money-movement claim appears. The same paper motion is an economical reuse of the escrow receipt treatment."
+    },
+    {
+      "id": "escrow-dispatch",
+      "score": 7.3,
+      "status": "accepted",
+      "observation": "A package prop and lateral whole-image movement give this state a relevant cue. 'Your photo is saved' accurately describes the recorded evidence; the next arrival action stays separate and usable."
+    },
+    {
+      "id": "escrow-arrived",
+      "score": 6.8,
+      "status": "one_targeted_revision",
+      "observation": "The quiet greenish arrival treatment appropriately lowers celebration intensity. At 320px, however, the compact mascot's trunk reaches the start of 'Arrival recorded' with essentially no visual breathing room. This persists in the static/reduced treatment.",
+      "targetedRevision": "Reserve visible clearance between the compact illustration and text at 320px: reduce the art or adjust its grid allocation/gap. Keep the restrained arrival choreography and factual copy."
+    },
+    {
+      "id": "escrow-complete",
+      "score": 7.8,
+      "status": "accepted",
+      "observation": "The larger centered stage earns its extra space for the terminal state. The wider halo, small accent burst, check and final rest make a clear peak without covering the History entry. 'Received and checked' describes completion without asserting a money release."
+    },
+    {
+      "id": "shop-shop",
+      "score": 6.8,
+      "status": "one_targeted_revision",
+      "observation": "The subdued saved-application treatment and pending-review copy correctly avoid shop-activation claims. At 320px the mascot trunk crowds the first letter of 'Details saved'; the small card needs clearer separation even in reduced motion.",
+      "targetedRevision": "Reserve visible clearance between the compact illustration and text at 320px: reduce the art or adjust its grid allocation/gap. Preserve the subdued treatment, Pending review status and payments-not-enabled copy."
+    }
+  ],
+  "summary": {
+    "accepted": 8,
+    "requiresOneTargetedRevision": 2,
+    "overallScore": 7.2,
+    "judgment": "A coherent, useful motion layer with appropriate hierarchy and restrained finite feedback. It meets an adequate production standard in eight states. Repeated whole-image mascot/check/paper staging limits its expressive range; the two compact cards need one spacing revision before acceptance."
+  },
+  "globalLimitations": [
+    "Frame-based browser review, not a continuous high-frame-rate recording or physical-device performance measurement.",
+    "The character is an original flattened PNG. Whole-image transforms are not articulated limb/face animation.",
+    "The harness reuses production motion/styles with synthetic content and creates no records. The main agent's separate real-journey walkthrough is contextual evidence, not an independently repeated critic walkthrough.",
+    "This is a receipt/recording app. No payment verification, transfer, custody or money release was independently verified.",
+    "Reduced-motion was checked through the app's explicit query option; an OS-level preference toggle was not independently exercised.",
+    "Programmatic CSS animation-name inspection returned none even for normal replay, so it was not treated as proof of motion cancellation. Reduced-motion conclusions are based on visible replay frames.",
+    "Harness control labels wrap awkwardly at 320px; those review controls are not production UI and were excluded from production animation scores."
+  ],
+  "evidence": [
+    "critic-evidence/pass1-arrival-320.jpg",
+    "critic-evidence/pass1-shop-320.jpg"
+  ]
+}

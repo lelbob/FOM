@@ -1,0 +1,117 @@
+[
+  {
+    "label": "escrow create",
+    "headings": [
+      "Share deal",
+      "Deal created",
+      "Animation QA · Headphones"
+    ],
+    "moment": [
+      "✓Ready to shareDeal createdYour link and code are ready. Share them when you are."
+    ]
+  },
+  {
+    "label": "escrow join",
+    "headings": [
+      "Choose how to pay",
+      "You’re connected",
+      "Animation QA · Headphones"
+    ],
+    "moment": [
+      "✓Your next stepYou’re connectedDeal added to Buying. Choose how to pay."
+    ]
+  },
+  {
+    "label": "escrow receipt",
+    "headings": [
+      "Your deal",
+      "Receipt saved",
+      "Animation QA · Headphones",
+      "Payment sent"
+    ],
+    "moment": [
+      "✓Submission savedReceipt savedSubmitted for review. Payment is not verified."
+    ]
+  },
+  {
+    "label": "escrow package sent",
+    "headings": [
+      "Your deal",
+      "Package recorded",
+      "Animation QA · Headphones",
+      "Package on its way"
+    ],
+    "moment": [
+      "✓One step forwardPackage recordedYour photo is saved. Confirm arrival when it gets there."
+    ]
+  },
+  {
+    "label": "escrow arrival",
+    "headings": [
+      "Your deal",
+      "Arrival recorded",
+      "Animation QA · Headphones",
+      "Delivery arrived"
+    ],
+    "moment": [
+      "✓Handoff recordedArrival recordedThe buyer can now receive and check the package."
+    ]
+  },
+  {
+    "label": "escrow complete in History",
+    "headings": [
+      "Escrow",
+      "Deal complete",
+      "History"
+    ],
+    "moment": [
+      "✓All done, togetherDeal completeReceived and checked. Saved in your History."
+    ]
+  },
+  {
+    "label": "cross banking create",
+    "headings": [
+      "Share payment",
+      "Request ready",
+      "Animation QA · Cross banking"
+    ],
+    "moment": [
+      "✓Ready to shareRequest readyYour link and code are ready. Share them when you are."
+    ]
+  },
+  {
+    "label": "cross banking request opened",
+    "headings": [
+      "Choose how to pay",
+      "Request opened",
+      "Animation QA · Cross banking"
+    ],
+    "moment": [
+      "✓Your next stepRequest openedChoose how you would like to pay."
+    ]
+  },
+  {
+    "label": "cross banking receipt saved",
+    "headings": [
+      "One-time payment",
+      "Receipt saved",
+      "Animation QA · Cross banking",
+      "Receipt submitted"
+    ],
+    "moment": [
+      "✓Submission savedReceipt savedSubmitted for review. Payment is not verified."
+    ]
+  },
+  {
+    "label": "cross banking shop inquiry",
+    "headings": [
+      "Shop registration",
+      "Details saved",
+      "Animation QA · Sunday Studio",
+      "Inquiry pending"
+    ],
+    "moment": [
+      "✓Application savedDetails savedShop setup still needs the team. You can find your details here."
+    ]
+  }
+]

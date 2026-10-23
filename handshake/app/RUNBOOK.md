@@ -1,6 +1,17 @@
-# Local runbook
+# FOM — Future of Myanmar · local runbook
+
+## Revised receipt MVP — 23 October 2026
+
+The latest user direction supersedes the earlier customer navigation and automatic-provider demonstration. The normal index now has Escrow, Payment and Enter code, with no Account tab. Receipt submission records Marked as sent, not verified payment. Escrow adds seller delivery photo and buyer received confirmation; one-time payments archive after submission. Shop setup saves an application and ends at Contact team without external contact. ES/PY/SP codes and camera/image QR scanning are supported. Existing financial records, sessions and staff controls are preserved in the legacy view. New nonfinancial states use migration 006 and `/api/mvp/*`; they never book a ledger entry or dispatch money. Full revised flow and current validation: `outputs/receipt-mvp/HANDOFF.md` at workspace root.
+
 
 22 October 2026. Exactly two services: escrow and acceptance (single-use requests or permanent shops). All financial capabilities are simulated; none are sandbox-connected or live.
+
+## Current FOM build
+
+Use `/index.html` for the normal phone-width app and `/mobile.html` for the optional device preview. Both use this server and the saved database. The desktop workspace is `/admin.html`. Home has Protect a deal and Accept payments; requests and shops reuse saved fictional merchant setup. Provider authorization is explicitly simulated on the separate testing surface. A counter browser QR is not bank-payable.
+
+Current implementation evidence and selected screenshots: `../../outputs/fom-implementation/IMPLEMENTATION_REPORT.md`. The prior 37-test evidence below is historical; the FOM pass has 46 backend tests plus browser checks. No provider connection or deployment occurred.
 
 ## Start
 

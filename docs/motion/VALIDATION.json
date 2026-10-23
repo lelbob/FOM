@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-23",
+  "backend_tests": {
+    "passed": 65,
+    "failed": 0,
+    "runs": [
+      "working app",
+      "copied FOM app"
+    ]
+  },
+  "frontend_checks": [
+    "earned_motion_ui.cjs: ten service/milestone variants, deduplication, truthful copy, History completion, motion preferences and interruption",
+    "customer_ui.cjs: standard and reduced motion, 14 routes",
+    "payment_flow_ui.cjs: receipt-required cross banking",
+    "escrow_flow_ui.cjs: two-party flow, package, arrival, report pause/withdraw and completion",
+    "scanner_ui.cjs: mocked camera/QR lifecycle"
+  ],
+  "browser_walkthrough": "Real UI before/after for escrow and cross banking; actual shop inquiry also saved in an isolated test database. Synthetic QA content only.",
+  "critic": {
+    "initial_review": "independent browser replay, normal/slow/frozen",
+    "revised_layout_review": "independent inspection of revised root-browser screenshots; choreography unchanged",
+    "accepted_cases": 10,
+    "overall": 7.3,
+    "max_redos_per_case": 1,
+    "revised_cases": [
+      "escrow-arrived",
+      "shop-shop"
+    ]
+  },
+  "screenshots": 115,
+  "runtime_data_published": false,
+  "snapshot_manifest": "../../SNAPSHOT.json"
+}

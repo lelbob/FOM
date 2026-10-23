@@ -90,3 +90,43 @@ html:has(body.customer-app){scrollbar-width:none}html:has(body.customer-app)::-w
 .admin-app .app-header,.admin-app .app-tabs{display:none}
 @media(max-width:375px){.customer-app .app-header{padding-left:20px;padding-right:20px}.customer-app main{padding-left:18px;padding-right:18px}.customer-app .home-hero{padding:22px;min-height:238px}.home-hero h1{font-size:28px}.home-hero p{max-width:150px;font-size:10px}.home-hero soft-elephant,.home-hero .elephant{width:118px;height:110px}.customer-app .service{padding:16px 14px;gap:9px}.customer-app .service p{font-size:10px}.customer-app .service h2{font-size:15px}}
 @media print{.customer-app .app-header,.customer-app .app-tabs{display:none}.customer-app main{padding:0}.customer-app .shell{width:100%;min-height:0}}
+
+/* FOM: compact tasks and original artwork, shared with the existing shell. */
+.original-mascot{object-fit:contain;display:block;margin:0 auto;max-width:100%;height:126px}
+.customer-app .home-hero{min-height:148px;padding:20px;margin-bottom:22px}
+.customer-app .home-hero h1{font-size:25px;max-width:200px;margin-top:9px}
+.customer-app .home-hero p{max-width:180px;font-size:12px}
+.customer-app .home-hero .original-mascot{position:absolute;width:95px;height:95px;right:6px;bottom:10px}
+.customer-app.app-flow .app-tabs{display:none}
+.customer-app.app-flow{padding-bottom:0}
+.stage-nav{display:flex;gap:9px;flex-wrap:wrap;font-size:10px;color:#62667f;margin-bottom:26px}
+.stage-nav [aria-current]{color:var(--ink);font-weight:800}
+.customer-app .field,.customer-app .row,.customer-app .check{font-size:12px}
+.customer-app .fine{font-size:11px}
+.customer-app .service p{font-size:12px}
+.customer-app .activity-row{grid-template-columns:34px minmax(0,1fr) minmax(70px,100px)}
+.activity-row b,.recipient b,.hero h1,.flow-card h1{overflow-wrap:anywhere}
+.row span{flex-shrink:1;min-width:0}.row b{min-width:0}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #535da7;outline-offset:3px}
+summary{min-height:44px;cursor:pointer}
+.customer-app .recipient>div{min-width:0;overflow-wrap:anywhere}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media print{.app-header,.app-tabs,.sidebar,.simulation,.topline,.page-head,.actions,#toast{display:none!important}.shell{display:block}main{padding:0!important}.flow-card{border:0!important}}
+
+[hidden]{display:none!important}.audit-search{min-height:44px;padding:12px;border:1px solid var(--line);border-radius:12px;width:100%;margin-bottom:16px}.customer-app[data-route="counter-display"] .account-button{display:none}
+
+.item-photo{display:block;width:100%;max-height:220px;object-fit:contain;border-radius:16px;margin:20px auto}
+
+.activity-group{font-size:14px;margin-top:24px}
+
+.case-tabs{display:flex;gap:8px;margin:12px 0 24px}.case-tabs button{min-height:44px;border:1px solid var(--line);background:var(--paper);padding:12px 20px;border-radius:24px;color:var(--ink)}.case-tabs [aria-selected=true]{background:var(--accent);border-color:var(--accent)}
+
+.back{width:44px;height:44px;min-height:44px;min-width:44px}
+.receipt-app .app-tabs{grid-template-columns:repeat(3,1fr)}
+.receipt-app .app-tabs>a>span[aria-hidden]{font-size:23px}
+.hub-heading{margin-top:28px;margin-bottom:14px;font-size:18px}
+.method-options{border:0;padding:0;margin:20px 0}
+.method-options .check{background:var(--surface);border-radius:14px;padding:14px;align-items:center}
+#camera{display:block;width:100%;max-height:300px;object-fit:cover;border-radius:18px;background:var(--ink);margin-top:16px}
+.customer-app .acceptance-modes{display:flex;gap:8px;margin:12px 0}
+.customer-app .acceptance-modes button{flex:1;min-height:44px}

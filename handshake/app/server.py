@@ -17,6 +17,7 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 from providers import provider
+import receipt_mvp
 
 ROOT = Path(__file__).resolve().parent
 PUBLIC = ROOT / 'public'
@@ -110,11 +111,12 @@ def settings(db, key): return db.execute('SELECT value FROM settings WHERE key=?
 def project(db, r, s):
     private = bool(member(r, s))
     require(r['kind']!='payment' or private,'Private payer or recipient access required.',403)
-    fields = ['id','kind','code','version','created','name','item','description','delivery','window','net','fee','total','rail','state','collection','payout','expires','shop_id','source_id','quote_expires','destination_mask','accepted','case_open','scenario','reviewed','method','instruction_type','recovery_only','beneficiary_version','fee_version']
+    fields = ['photo','purpose','delivery_note','merchant','environment','settlement_model','provider_profile','id','kind','code','version','created','name','item','description','delivery','window','net','fee','total','rail','state','collection','payout','expires','shop_id','source_id','quote_expires','destination_mask','accepted','case_open','scenario','reviewed','method','instruction_type','recovery_only','beneficiary_version','fee_version']
     out = {k: r[k] for k in fields if k in r}
     if r['kind']=='request' and r.get('payment_id'):
         payment=get_record(db,r['payment_id'])
         out.update(state=payment['state'],collection=payment['collection'],payout=payment['payout'])
+        if s and s['actor']==payment.get('payer'):out['resume_payment_id']=payment['id']
     if r['kind']=='request' and now() >= r['expires'] and not r.get('payment_id'): out['state']='expired'
     out['private'] = private
     out['is_owner'] = bool(owner(r, s))
@@ -152,6 +154,14 @@ def project(db, r, s):
     else:
         out.pop('scenario', None)
         out.pop('case_open', None)
+    out['environment']='simulation'
+    if r.get('settlement_model')=='merchant_direct':
+        out['settlement_status']=r.get('payout','not_started')
+        if r['kind']=='request' and r.get('payment_id'): out['settlement_status']=payment['payout']
+    if private and (out['is_payer'] or out['is_buyer']) and r.get('collection_ref'):
+        out['payment_action']={'kind':'qr' if r.get('provider_profile')=='qr' else 'hosted_checkout',
+            'checkout_url':'/simulator.html#'+r['id'], 'reference':r['collection_ref'],
+            'expires_at':r.get('quote_expires'),'environment':'simulation'}
     return out
 
 def journal(db, r, key, postings):
@@ -164,7 +174,7 @@ def liability(r):
     return 'receipt_suspense' if r.get('recovery_only') else 'escrow_liability' if r['kind']=='escrow' else 'merchant_payable'
 
 def quote_snapshot(r, method=None):
-    fields=['net','fee','total','rail','destination','beneficiary_version','fee_version','delivery','description','window','agreement_version','quote_expires']
+    fields=['merchant','provider_profile','settlement_model','net','fee','total','rail','destination','beneficiary_version','fee_version','delivery','description','window','agreement_version','quote_expires']
     q={k:r[k] for k in fields if k in r}
     q.update(currency='MMK',collection_route=method,provider_collection_cost=0,provider_payout_cost=0,fee_policy='illustrative; full fee returned on full refund',beneficiary_verification='simulated')
     q['hash']=digest(encode(q))
@@ -172,21 +182,25 @@ def quote_snapshot(r, method=None):
 
 def reserve_job(db, r, job, reverse=False):
     if not r.get('accounting_version'): return
+    if job['type']=='settlement': return
     kind=job['type']; n=r['total'] if kind=='refund' else r['net']
     postings=[(liability(r),r['net']),('deferred_fee',r['fee']),('refund_reserved',-n)] if kind=='refund' else [(liability(r),n),('payout_reserved',-n)]
+    if kind=='refund' and r.get('settlement_model')=='merchant_direct':
+        postings=[('merchant_settlement_due',r['net']),('merchant_fee_due',r['fee']),('refund_reserved',-n)]
     journal(db,r,('unreserve:' if reverse else 'reserve:')+job['id'],[(a,-v if reverse else v) for a,v in postings if v])
 
 def start_job(db, r, kind='payout'):
     require(r.get('collection')=='confirmed' and r.get('payout')!='confirmed','Confirmed, unsettled collection required.',409)
     require(not db.execute("SELECT 1 FROM jobs WHERE record_id=? AND state IN ('pending','unknown')",(r['id'],)).fetchone(),'An existing instruction must be resolved first.',409)
-    require(kind=='refund' or available_float(db)>=r['net'],'Payout float unavailable.',409)
+    if kind=='payout' and r.get('settlement_model')=='merchant_direct': kind='settlement'
+    require(kind in ['refund','settlement'] or available_float(db)>=r['net'],'Payout float unavailable.',409)
     key = uid('job')
     instruction=dict(type=kind,amount=r['total'] if kind=='refund' else r['net'],currency='MMK',destination=('original-source:'+r['collection_ref']) if kind=='refund' else r['destination'],rail=r.get('method') if kind=='refund' else r['rail'],beneficiary_version=r.get('beneficiary_version'),quote_hash=r.get('quote',{}).get('hash'),allocation_hash=r.get('allocation_hash'))
     db.execute('INSERT INTO jobs(id,record_id,type,state,due,scenario,reference,instruction) VALUES (?,?,?,?,?,?,?,?)', (key,r['id'],kind,'pending',now()+2,r.get('scenario','success'),uid('SIM-OUT'),encode(instruction)))
     reserve_job(db,r,dict(id=key,type=kind))
     r['payout']='pending'
     r['instruction_type']=kind
-    r['state']='release_pending' if r['kind']=='escrow' and kind=='payout' else ('refund_pending' if kind=='refund' else 'payout_pending')
+    r['state']='release_pending' if r['kind']=='escrow' and kind=='payout' else ('refund_pending' if kind=='refund' else 'settlement_pending' if kind=='settlement' else 'payout_pending')
     event(db,r['id'],'system',kind+'.requested')
 
 def available_float(db):
@@ -207,10 +221,12 @@ def receive(db, rid, event_id, receipt_id, paid_amount):
     db.execute('INSERT INTO callbacks VALUES (?,?,?,?)',(event_id,receipt_id,rid,paid_amount))
     r.update(collection='confirmed',receipt_id=receipt_id,state='held' if r['kind']=='escrow' else 'collected')
     postings=[('provider_cash',r['total']),(liability(r),-r['net']),('deferred_fee',-r['fee'])] if r.get('accounting_version') else [('provider_cash',r['total']),('customer_liability',-r['total'])]
+    if r.get('settlement_model')=='merchant_direct':
+        postings=[('merchant_provider_clearing',r['total']),('merchant_settlement_due',-r['net']),('merchant_fee_due',-r['fee'])]
     journal(db,r,'collection:'+rid,[(a,v) for a,v in postings if v])
     event(db,rid,'simulator','collection.confirmed',receipt_id)
     if r['kind']=='payment':
-        if available_float(db)<r['net'] or r.get('scenario')=='insufficient_float':
+        if r.get('settlement_model')!='merchant_direct' and (available_float(db)<r['net'] or r.get('scenario')=='insufficient_float'):
             r.update(state='payout_failed',payout='failed',case_open=True,case_reason='Payment received; payout liquidity is unavailable.')
             event(db,rid,'system','case.opened',r['case_reason'])
         else: start_job(db,r)
@@ -286,7 +302,7 @@ def finish_job(db, job, outcome=None):
         state=outcome
         db.execute('UPDATE jobs SET state=? WHERE id=?',(state,job['id']))
         if state=='failed': reserve_job(db,r,job,True)
-        r.update(payout=state,state='payout_'+state,case_open=True,case_reason='Provider outcome is unknown.' if state=='unknown' else 'Provider confirmed payout failure.')
+        r.update(payout=state,state=('settlement_attention' if job['type']=='settlement' else 'payout_'+state),case_open=True,case_reason=('Merchant settlement outcome is unknown; query the original reference.' if state=='unknown' else 'Provider confirmed merchant settlement failure.') if job['type']=='settlement' else ('Provider outcome is unknown.' if state=='unknown' else 'Provider confirmed payout failure.'))
         event(db,r['id'],'simulator','payout.'+state,job['reference'])
     else:
         net = r['total'] if job['type']=='refund' else r['net']
@@ -294,9 +310,13 @@ def finish_job(db, job, outcome=None):
             require(int(settings(db,'float'))>=net, 'Payout float unavailable.',409)
             db.execute("UPDATE settings SET value=CAST(value AS INTEGER)-? WHERE key='float'",(net,))
         postings=([('refund_reserved',net),('provider_cash',-net)] if job['type']=='refund' else [('payout_reserved',net),('deferred_fee',r['fee']),('provider_cash',-net),('fee_income',-r['fee'])]) if r.get('accounting_version') else [('customer_liability',r['total']),('provider_cash',-net)]+([] if job['type']=='refund' else [('fee_income',-r['fee'])])
+        if job['type']=='refund' and r.get('settlement_model')=='merchant_direct':
+            postings=[('refund_reserved',net),('merchant_provider_clearing',-net)]
+        if job['type']=='settlement':
+            postings=[('merchant_provider_clearing',-r['total']),('merchant_settlement_due',r['net']),('merchant_fee_due',r['fee'])]
         journal(db,r,job['id'],[(a,v) for a,v in postings if v])
         db.execute("UPDATE jobs SET state='confirmed' WHERE id=?",(job['id'],))
-        r.update(payout='confirmed',state='refunded' if job['type']=='refund' else 'completed',case_open=False)
+        r.update(payout='confirmed',state='refunded' if job['type']=='refund' else 'settled' if job['type']=='settlement' else 'completed',case_open=False)
         event(db,r['id'],'simulator',job['type']+'.confirmed',job['reference'])
     save(db,r)
     if r.get('settlement_parent'): sync_settlement(db,r['settlement_parent'])
@@ -352,14 +372,29 @@ def mutate(db, path, b, s):
         require(s['role']=='customer','Use a customer session to create a payment.',403)
         kind=b.get('kind')
         require(kind in ['escrow','request','shop'],'Choose escrow, payment request, or shop.')
-        name=text(b.get('name'),'Your name',1,60)
+        merchant=None
+        if b.get('merchant_setup') is True and kind!='escrow':
+            row=db.execute('SELECT data FROM merchants WHERE actor=?',(actor,)).fetchone()
+            require(row is not None,'Set up your demo merchant first.',409)
+            merchant=json.loads(row['data'])
+            require(merchant['status']=='approved','Demo merchant verification is pending.',409)
+            b=dict(b,name=merchant['display_name'],rail=merchant['rail'],destination=merchant['account'],demo_verified=True)
+        name=text(b.get('shop_name') or b.get('name'),'Your name',1,60)
         rail=b.get('rail','KPay'); require(rail in METHODS,'Unsupported payout method.')
         destination=text(b.get('destination'),'Demo payout destination',5,30)
         require(b.get('demo_verified') is True,'Confirm the simulated beneficiary setup.')
         data=dict(name=name,rail=rail,destination_mask='•• '+destination[-4:],destination=destination,beneficiary_version=1,fee_version='demo-net-2pct-min100-v1',accounting_version=2,state='open',scenario='success',payout='not_started',collection='not_started')
+        data['purpose']=text(b.get('purpose') or 'Merchant payment','Purpose',1,100)
+        if merchant: data.update(merchant={k:v for k,v in merchant.items() if k!='account'},settlement_model='merchant_direct',provider_profile=merchant['profile'],environment='simulation')
         if kind!='shop':
             net=amount(b.get('net')); data.update(net=net,fee=fee(net),total=net+fee(net),expires=now()+1800)
         else: data['paused']=False
+        if b.get('photo'):
+            photo=b['photo'];require(isinstance(photo,str) and photo.startswith(('data:image/png;base64,','data:image/jpeg;base64,')) and len(photo)<700000,'Choose a PNG/JPEG up to 500 KB.')
+            try: decoded=base64.b64decode(photo.split(',',1)[1],validate=True)
+            except Exception: raise DomainError('Invalid item photo.')
+            require(len(decoded)<=500*1024 and (decoded.startswith(b'\x89PNG\r\n\x1a\n') or decoded.startswith(b'\xff\xd8')),'Invalid PNG/JPEG image.')
+            data['photo']=photo
         if kind=='escrow':
             data.update(item=text(b.get('item'),'Item',1,100),description=text(b.get('description','Agreed directly between buyer and seller'),'Description',1,600),delivery=text(b.get('delivery'),'Delivery agreement',3,300),window=text(b.get('window','24 hours after confirmed receipt'),'Check window',3,100),state='awaiting_buyer',agreement_version=1,invitation=secrets.token_urlsafe(18))
         db.execute('UPDATE accounts SET name=? WHERE id=?',(name,actor))
@@ -370,6 +405,15 @@ def mutate(db, path, b, s):
     require(len(parts)==4 and parts[:2]==['api','records'],'Unknown command.',404)
     rid, action=parts[2:]; r=get_record(db,rid)
     require(not r.get('settlement_children') or action in ['evidence','note','assign','request-evidence','scenario'],'Settlement legs must be followed independently; the original hold cannot be dispatched again.',409)
+    if action=='counter-request':
+        require(s['role']=='customer' and owner(r,s) and r['kind']=='shop','Private shop owner access required.',403)
+        require(not r.get('paused') and settings(db,'route_open')=='true','Shop payments are paused.',409)
+        net=amount(b.get('net'))
+        data={k:r[k] for k in ['name','rail','destination','destination_mask','beneficiary_version','fee_version','accounting_version','merchant','settlement_model','provider_profile','environment'] if k in r}
+        data.update(net=net,fee=fee(net),total=net+fee(net),shop_id=r['id'],state='open',collection='not_started',payout='not_started',scenario='success',expires=now()+1800,purpose=text(b.get('purpose') or 'Counter purchase','Purpose',1,100))
+        order=insert(db,'request',actor,data)
+        event(db,order['id'],actor,'counter.created','Fixed-amount browser checkout; no bank QR capability')
+        return {'record':project(db,order,s)}
     if action=='pay-intent':
         require(s['role']=='customer','A private customer session is required.',403)
         require(r['kind'] in ['request','shop'],'Invalid payment source.')
@@ -384,8 +428,11 @@ def mutate(db, path, b, s):
         else:
             require(not r.get('paused'),'This shop has paused new payments.',409)
             net=amount(b.get('net'))
-        require(available_float(db)>=net,'This payout route has insufficient available float. No payment was taken.',409)
-        p=insert(db,'payment',r['owner'],dict(name=r['name'],net=net,fee=fee(net),total=net+fee(net),rail=r['rail'],destination=r['destination'],destination_mask=r['destination_mask'],beneficiary_version=r['beneficiary_version'],fee_version=r.get('fee_version','demo-net-2pct-min100-v1'),accounting_version=2,source_id=rid,shop_id=rid if r['kind']=='shop' else None,payer=actor,state='awaiting_payment',collection='not_started',payout='not_started',quote_expires=now()+900,scenario=r.get('scenario','success')))
+        require(r.get('settlement_model')=='merchant_direct' or available_float(db)>=net,'This payout route has insufficient available float. No payment was taken.',409)
+        p=insert(db,'payment',r['owner'],dict(name=r['name'],net=net,fee=fee(net),total=net+fee(net),rail=r['rail'],destination=r['destination'],destination_mask=r['destination_mask'],beneficiary_version=r['beneficiary_version'],fee_version=r.get('fee_version','demo-net-2pct-min100-v1'),accounting_version=2,source_id=rid,shop_id=rid if r['kind']=='shop' else r.get('shop_id'),payer=actor,state='awaiting_payment',collection='not_started',payout='not_started',quote_expires=now()+900,scenario=r.get('scenario','success')))
+        for field in ['purpose','merchant','settlement_model','provider_profile','environment']:
+            if field in r: p[field]=r[field]
+        save(db,p)
         if r['kind']=='request': r['payment_id']=p['id'];save(db,r)
         return {'record':project(db,p,s)}
     if action=='join':
@@ -407,7 +454,7 @@ def mutate(db, path, b, s):
             require(not source.get('paused'),'This shop is paused.',409)
             require(source['kind']=='shop' or now()<source['expires'],'This request expired.',409)
         require(settings(db,'route_open')=='true','Collections are temporarily paused.',409)
-        require(available_float(db)>=r['net'],'Payout float is unavailable; no collection was started.',409)
+        require(r.get('settlement_model')=='merchant_direct' or available_float(db)>=r['net'],'Payout float is unavailable; no collection was started.',409)
         method=b.get('method');require(method in METHODS,'Choose an available collection method.')
         r.update(state='collection_pending',collection='pending',accepted=True,method=method,collection_ref=uid('SIM-IN'))
         r['quote']=quote_snapshot(r,method)
@@ -421,6 +468,7 @@ def mutate(db, path, b, s):
     elif action=='deliver':
         require(owner(r,s),'Only the seller can mark delivery.',403)
         require(r['kind']=='escrow' and r['state']=='held' and not r.get('case_open'),'This deal is not awaiting delivery.',409)
+        r['delivery_note']=text(b.get('note') or 'Seller marked delivered','Delivery note',1,300)
         r['state']='delivered';event(db,rid,actor,'delivery.claimed','Buyer must still check and authorize release')
     elif action=='release':
         require(r.get('buyer')==actor,'Only the private buyer can release this payment.',403)
@@ -589,6 +637,17 @@ class Handler(SimpleHTTPRequestHandler):
     def handle_get(self):
         path=urlparse(self.path).path
         try:
+            if path.startswith('/api/mvp/'):
+                with connection() as db:
+                    self.respond(receipt_mvp.handle(db,path,None,self.session(db),require,event))
+                return
+            if path=='/api/merchant':
+                with connection() as db:
+                    s=self.session(db)
+                    require(s and s['role']=='customer','Private customer access required.',401)
+                    row=db.execute('SELECT data FROM merchants WHERE actor=?',(s['actor'],)).fetchone()
+                    self.respond({'merchant':json.loads(row['data']) if row else None})
+                return
             if path=='/api/session':
                 with connection() as db:
                     s=self.session(db)
@@ -632,7 +691,7 @@ class Handler(SimpleHTTPRequestHandler):
                         records=[project(db,get_record(db,x['id']),s) for x in db.execute('SELECT id FROM records ORDER BY rowid DESC')]
                         balances=[dict(x) for x in db.execute('SELECT account,SUM(amount) AS balance FROM ledger GROUP BY account')]
                         journals=[dict(x) for x in db.execute('SELECT journal,SUM(amount) AS difference FROM ledger GROUP BY journal HAVING SUM(amount)!=0')]
-                        callbacks=[dict(x) for x in db.execute('SELECT c.record_id,c.amount,COALESCE(SUM(l.amount),0) AS ledger_amount FROM callbacks c LEFT JOIN ledger l ON l.record_id=c.record_id AND l.account=\'provider_cash\' AND l.journal LIKE \'collection:%\' GROUP BY c.receipt_id HAVING c.amount!=COALESCE(SUM(l.amount),0)')]
+                        callbacks=[dict(x) for x in db.execute('SELECT c.record_id,c.amount,COALESCE(SUM(l.amount),0) AS ledger_amount FROM callbacks c LEFT JOIN ledger l ON l.record_id=c.record_id AND l.account IN (\'provider_cash\',\'merchant_provider_clearing\') AND l.journal LIKE \'collection:%\' GROUP BY c.receipt_id HAVING c.amount!=COALESCE(SUM(l.amount),0)')]
                         inbox=[dict(x) for x in db.execute('SELECT id,event_id,receipt_id,record_id,disposition,reason,recovery_id,created FROM provider_inbox ORDER BY id DESC LIMIT 200')]
                         unresolved=[x for x in inbox if x['disposition'] in ['unmatched','rejected']]
                         provider_differences=[dict(x) for x in db.execute("SELECT p.reference,p.outcome,j.state AS internal_state FROM provider_instructions p JOIN jobs j ON j.id=p.job_id WHERE p.outcome!=j.state AND NOT(p.outcome='confirmed' AND j.state='pending')")]
@@ -688,13 +747,33 @@ class Handler(SimpleHTTPRequestHandler):
                     token=create_session(db,actor,role)
                     self.respond({'session':{'actor':actor,'role':role}},cookie=f'handshake={token}; HttpOnly; SameSite=Strict; Path=/; Max-Age=604800');return
                 s=self.session(db);require(s is not None,'Start or restore your private session.',401)
+                if path.startswith('/api/mvp/'):
+                    self.respond(receipt_mvp.handle(db,path,b,s,require,event));return
                 if path=='/api/session/logout':
                     db.execute('DELETE FROM sessions WHERE token=?',(s['token'],));self.respond({'ok':True},cookie='handshake=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0');return
+                if path=='/api/merchant':
+                    require(s['role']=='customer','Private customer access required.',403)
+                    require(b.get('demo_verified') is True,'Confirm fictional merchant details.')
+                    profile=b.get('profile','hosted');require(profile in ['hosted','qr'],'Choose hosted or QR demo checkout.')
+                    rail=b.get('rail','KPay');require(rail in METHODS,'Unsupported demo account.')
+                    previous=db.execute('SELECT data FROM merchants WHERE actor=?',(s['actor'],)).fetchone()
+                    version=json.loads(previous['data'])['version']+1 if previous else 1
+                    account=text(b.get('account'),'Fictional account',5,30)
+                    m=dict(id='demo-merchant:'+s['actor'],display_name=text(b.get('display_name'),'Merchant name',1,60),payment_name=text(b.get('display_name'),'Merchant name',1,60),rail=rail,account=account,account_mask='•• '+account[-4:],profile=profile,status='approved',environment='simulation',version=version,settlement_timing='Automatic demo settlement after collection; no live schedule agreed')
+                    db.execute('INSERT INTO merchants VALUES (?,?) ON CONFLICT(actor) DO UPDATE SET data=excluded.data',(s['actor'],encode(m)))
+                    for row in db.execute("SELECT id FROM records WHERE owner=? AND kind='shop'",(s['actor'],)).fetchall():
+                        shop=get_record(db,row['id'])
+                        if shop.get('settlement_model')=='merchant_direct':
+                            shop.update(rail=m['rail'],destination=m['account'],destination_mask=m['account_mask'],beneficiary_version=m['version'],merchant={k:v for k,v in m.items() if k!='account'},provider_profile=m['profile'])
+                            save(db,shop)
+                            event(db,shop['id'],s['actor'],'shop.receiving_version_updated','New orders use merchant configuration version '+str(m['version'])+'; authorized orders retain snapshots')
+                    event(db,m['id'],s['actor'],'merchant.demo_approved','Fictional profile; verification is simulated')
+                    self.respond({'merchant':m});return
                 if path=='/api/drafts':
                     require(s['role']=='customer','Private customer access required.',403)
                     kind=b.get('kind');require(kind in ['escrow','request','shop'],'Invalid draft kind.')
-                    allowed=['kind','name','net','rail','destination','item','description','delivery','window']
-                    draft={k:str(b[k])[:1000] for k in allowed if k in b}
+                    allowed=['photo','_updated','kind','name','net','rail','destination','item','description','delivery','window','purpose','shop_name','merchant_setup','demo_verified','command_id']
+                    draft={k:(b[k] is True or b[k]=='true' if k in ['demo_verified','merchant_setup'] else str(b[k])[:700000 if k=='photo' else 1000]) for k in allowed if k in b}
                     db.execute('INSERT INTO drafts VALUES (?,?,?,?) ON CONFLICT(actor,kind) DO UPDATE SET data=excluded.data,updated=excluded.updated',(s['actor'],kind,encode(draft),now()))
                     self.respond({'ok':True});return
                 if path=='/api/admin/route':
@@ -743,7 +822,7 @@ def worker(stop):
 if __name__=='__main__':
     initialize();stop=threading.Event();threading.Thread(target=worker,args=(stop,),daemon=True).start()
     server=ThreadingHTTPServer(('127.0.0.1',PORT),Handler);server.lookups={};server.logins={}
-    print(f'Handshake: http://127.0.0.1:{PORT}\nLocal simulation only. Staff accounts: support, operations, finance-a, finance-b.\nSee README.md for the demo password and recovery instructions.',flush=True)
+    print(f'FOM — Future of Myanmar: http://127.0.0.1:{PORT}\nLocal simulation only. Staff accounts: support, operations, finance-a, finance-b.\nSee README.md for the demo password and recovery instructions.',flush=True)
     try:server.serve_forever()
     except KeyboardInterrupt:pass
     finally:stop.set();server.server_close()

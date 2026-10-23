@@ -1,0 +1,812 @@
+{
+  "generated_at": "2026-10-23",
+  "scope": "Saved screenshots of the FOM/Handshake product and its own flow prototypes. Current build and older snapshots are separated. Third-party Mobbin screenshots, mascot source assets and synthetic receipt input are excluded.",
+  "count": 115,
+  "screenshots": [
+    {
+      "path": "screenshots/current/main-screens/01-home.png",
+      "source": "outputs/motion-implementation/evidence/flow/01-home.png",
+      "category": "current/main-screens",
+      "bytes": 18109,
+      "sha256": "b9bacdd4405dcaa124a9e568b1ba6bd7bc058805e5487fc31ea7be093dc08400"
+    },
+    {
+      "path": "screenshots/current/main-screens/02-escrow-hub.png",
+      "source": "outputs/motion-implementation/evidence/flow/02-escrow-hub.png",
+      "category": "current/main-screens",
+      "bytes": 17137,
+      "sha256": "9de27f4fe6f627c6b662e26735bde53acc5e56fd3b9a41d05d88d32ff865a6ef"
+    },
+    {
+      "path": "screenshots/current/main-screens/03-cross-banking-hub.png",
+      "source": "outputs/motion-implementation/evidence/flow/03-cross-banking-hub.png",
+      "category": "current/main-screens",
+      "bytes": 18530,
+      "sha256": "1334ecc81eb546645d82b5c2881a77f5e9260aed420b626735e82e68eacd363c"
+    },
+    {
+      "path": "screenshots/current/main-screens/04-code-entry.png",
+      "source": "outputs/motion-implementation/evidence/flow/04-code-entry.png",
+      "category": "current/main-screens",
+      "bytes": 18557,
+      "sha256": "f1a79736c41eafe28ccc5c7410174afa27002bdc2c154b395bda100662d3704a"
+    },
+    {
+      "path": "screenshots/current/main-screens/05-help.png",
+      "source": "outputs/motion-implementation/evidence/flow/05-help.png",
+      "category": "current/main-screens",
+      "bytes": 15463,
+      "sha256": "992a72f6fdf124147cdd1010fc48c63a6b3873add9eef793e28dcdc5882c09d7"
+    },
+    {
+      "path": "screenshots/current/main-screens/06-profile.png",
+      "source": "outputs/motion-implementation/evidence/flow/06-profile.png",
+      "category": "current/main-screens",
+      "bytes": 12031,
+      "sha256": "e4f17d8efe4f3111bf55265a5f342a24080872f9d8734c27841769ec75d1ba72"
+    },
+    {
+      "path": "screenshots/current/main-screens/07-create-deal-title.png",
+      "source": "outputs/motion-implementation/evidence/flow/07-create-deal-title.png",
+      "category": "current/main-screens",
+      "bytes": 15484,
+      "sha256": "4dec46e76d6ad54a02f8764cefba6d767216a1fce4555636e112c9231b81a80e"
+    },
+    {
+      "path": "screenshots/current/main-screens/08-create-deal-receiving.png",
+      "source": "outputs/motion-implementation/evidence/flow/08-create-deal-receiving.png",
+      "category": "current/main-screens",
+      "bytes": 16300,
+      "sha256": "274a47edb7e3b50bd1fae6f15fe6a38103501eeeff6c0806a15aa59c1698790d"
+    },
+    {
+      "path": "screenshots/current/main-screens/09-create-deal-delivery.png",
+      "source": "outputs/motion-implementation/evidence/flow/09-create-deal-delivery.png",
+      "category": "current/main-screens",
+      "bytes": 14364,
+      "sha256": "90c779fd4c7f077ce20c5f0035567fcd4e1a848a03c90a2f903f287f3f71a67e"
+    },
+    {
+      "path": "screenshots/current/main-screens/10-create-payment-request.png",
+      "source": "outputs/motion-implementation/evidence/flow/10-create-payment-request.png",
+      "category": "current/main-screens",
+      "bytes": 16570,
+      "sha256": "7ec459a8119fe466fad401a3380cdff930bba5307d5fef9609ea8f1bb309050b"
+    },
+    {
+      "path": "screenshots/current/main-screens/11-shop-inquiry-form.png",
+      "source": "outputs/motion-implementation/evidence/flow/11-shop-inquiry-form.png",
+      "category": "current/main-screens",
+      "bytes": 21716,
+      "sha256": "c4e78f906d047f00abe306999dda69202e069894d4fae6aff1d260979bdf746c"
+    },
+    {
+      "path": "screenshots/motion-review/create-mid.png",
+      "source": "outputs/motion-implementation/evidence/create-mid.png",
+      "category": "motion-review",
+      "bytes": 38512,
+      "sha256": "4dbca031bcf46e899f9390a408dd2e278728f6eb0754c5b317b09a42772379f9"
+    },
+    {
+      "path": "screenshots/current/milestones/cross-created.png",
+      "source": "outputs/motion-implementation/evidence/cross-created.png",
+      "category": "current/milestones",
+      "bytes": 26057,
+      "sha256": "95562a8dcc52aaa4e6a6c65e1222e0cede1201cd586c4bfc21bbd16de91e3632"
+    },
+    {
+      "path": "screenshots/current/milestones/cross-receipt.png",
+      "source": "outputs/motion-implementation/evidence/cross-receipt.png",
+      "category": "current/milestones",
+      "bytes": 33795,
+      "sha256": "070a7fc99095e069e3382473f78cb64c6a8c9bc1896e1af34df452b88c98c2f1"
+    },
+    {
+      "path": "screenshots/current/milestones/escrow-completed.png",
+      "source": "outputs/motion-implementation/evidence/escrow-completed.png",
+      "category": "current/milestones",
+      "bytes": 28397,
+      "sha256": "d44e6999a0d872b0bcde12fb7b021b2afc8f0b60bedc88d000e8d16584d35c41"
+    },
+    {
+      "path": "screenshots/current/milestones/escrow-created.png",
+      "source": "outputs/motion-implementation/evidence/escrow-created.png",
+      "category": "current/milestones",
+      "bytes": 21446,
+      "sha256": "75f9c5f022f4780b0f4203086eaa7ee9e8972e365d5e5c54bf1837b2bf1f16b3"
+    },
+    {
+      "path": "screenshots/current/milestones/escrow-package.png",
+      "source": "outputs/motion-implementation/evidence/escrow-package.png",
+      "category": "current/milestones",
+      "bytes": 23400,
+      "sha256": "6795606115a3d94bfd639cbd48d7e10e2bfd3208b318be7127c3231234a3660f"
+    },
+    {
+      "path": "screenshots/current/milestones/escrow-receipt.png",
+      "source": "outputs/motion-implementation/evidence/escrow-receipt.png",
+      "category": "current/milestones",
+      "bytes": 26208,
+      "sha256": "21a3648b1f02dcf9de150ba955c371a4ee7b9e772b19344cc7f4239e7f0d30ae"
+    },
+    {
+      "path": "screenshots/current/milestones/shop-saved.png",
+      "source": "outputs/motion-implementation/evidence/shop-saved.png",
+      "category": "current/milestones",
+      "bytes": 23352,
+      "sha256": "2b89c95a60a67e4378a3b2d42e0b5eec443c22ba03c40012d55c2505dddba6f0"
+    },
+    {
+      "path": "screenshots/motion-review/pass1-arrival-320.jpg",
+      "source": "outputs/motion-implementation/critic-evidence/pass1-arrival-320.jpg",
+      "category": "motion-review",
+      "bytes": 29621,
+      "sha256": "bff37a6a68109c74938e023edb127bb0a46f7a97ac5446169b072c43f45ce23c"
+    },
+    {
+      "path": "screenshots/motion-review/pass1-shop-320.jpg",
+      "source": "outputs/motion-implementation/critic-evidence/pass1-shop-320.jpg",
+      "category": "motion-review",
+      "bytes": 27769,
+      "sha256": "04956ee107815c3de54bd5251a3b7796cdf86a7cb11eb2438213bc53190d700f"
+    },
+    {
+      "path": "screenshots/motion-review/revised-arrival-320.png",
+      "source": "outputs/motion-implementation/critic-evidence/revised-arrival-320.png",
+      "category": "motion-review",
+      "bytes": 29351,
+      "sha256": "e0b25beac32e21d6a84daab4bacd7ab620cc88f6facdfa2b5f12c549cd7e37f1"
+    },
+    {
+      "path": "screenshots/motion-review/revised-arrival-390.png",
+      "source": "outputs/motion-implementation/critic-evidence/revised-arrival-390.png",
+      "category": "motion-review",
+      "bytes": 32404,
+      "sha256": "4f3a6eb0200bf6bb6dc540515b6af36492022b01dbdf4581969afb30623e0644"
+    },
+    {
+      "path": "screenshots/motion-review/revised-arrival-reduced-320.png",
+      "source": "outputs/motion-implementation/critic-evidence/revised-arrival-reduced-320.png",
+      "category": "motion-review",
+      "bytes": 29487,
+      "sha256": "f9b49083c70940771ca4ae1e0d300e11daf5b68a48b0df5d4ab08adf4172bcaa"
+    },
+    {
+      "path": "screenshots/motion-review/revised-shop-320.png",
+      "source": "outputs/motion-implementation/critic-evidence/revised-shop-320.png",
+      "category": "motion-review",
+      "bytes": 27623,
+      "sha256": "5281a2ec61c7676177daed1bb46943156852fdd52d1889ca8163963d03e33090"
+    },
+    {
+      "path": "screenshots/motion-review/revised-shop-390.png",
+      "source": "outputs/motion-implementation/critic-evidence/revised-shop-390.png",
+      "category": "motion-review",
+      "bytes": 30071,
+      "sha256": "68197a9fd1bb552e8140630d297ae9795f3cf55c9fb47a0c05fbf51e3cf76d0a"
+    },
+    {
+      "path": "screenshots/motion-review/revised-shop-reduced-320.png",
+      "source": "outputs/motion-implementation/critic-evidence/revised-shop-reduced-320.png",
+      "category": "motion-review",
+      "bytes": 27768,
+      "sha256": "7ff27c5ea87113756e33500276d7d98b6ed10d9531b14252fd5f7b95228d5e86"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/01-home-360.png",
+      "source": "outputs/fom-implementation/01-home-360.png",
+      "category": "archive/fom-implementation",
+      "bytes": 52253,
+      "sha256": "66d64808486072bea72e1033f0418eac0139a360acf4c6919dc84bd40fc509a0"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/02-amount-360.png",
+      "source": "outputs/fom-implementation/02-amount-360.png",
+      "category": "archive/fom-implementation",
+      "bytes": 28151,
+      "sha256": "04dda2e255b7506326ff58998939b2d1368eafa8c0ec6298af2806889e1df8ad"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/03-agreement-360.png",
+      "source": "outputs/fom-implementation/03-agreement-360.png",
+      "category": "archive/fom-implementation",
+      "bytes": 92048,
+      "sha256": "deb3719041e53a9cce21edaab707a571a5939be9094fca5f72a26e344cb8a3d9"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/04-share-360.png",
+      "source": "outputs/fom-implementation/04-share-360.png",
+      "category": "archive/fom-implementation",
+      "bytes": 74750,
+      "sha256": "5bf7d845b4bc3c2f2a6950f89e091f2a0bac5a7d2078eb91c17cb2771b85c6b4"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/05-buyer-review-360.png",
+      "source": "outputs/fom-implementation/05-buyer-review-360.png",
+      "category": "archive/fom-implementation",
+      "bytes": 79971,
+      "sha256": "1ae711651c5b1474310b5f707c48350789bc1f4d82b52f1400dcce366ac72cdd"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/06-authorization-360.png",
+      "source": "outputs/fom-implementation/06-authorization-360.png",
+      "category": "archive/fom-implementation",
+      "bytes": 43120,
+      "sha256": "71f145e49802edc8399aab859eae06dce4dd825139f5bfe8b93722efcb9fd0b7"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/07-checking-360.png",
+      "source": "outputs/fom-implementation/07-checking-360.png",
+      "category": "archive/fom-implementation",
+      "bytes": 89681,
+      "sha256": "a690ba4e21f7e927236ec61a1e433fe5c82c651f04dc032baa514ed4b01854eb"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/08-held-360.png",
+      "source": "outputs/fom-implementation/08-held-360.png",
+      "category": "archive/fom-implementation",
+      "bytes": 83674,
+      "sha256": "76d6d1aac8d53589b20b6d7694cdee8c599c765f9b80f40d5109c5d9b2dc2755"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/09-release-360.png",
+      "source": "outputs/fom-implementation/09-release-360.png",
+      "category": "archive/fom-implementation",
+      "bytes": 60435,
+      "sha256": "8b6c53d5257ae37163f361ad2b2f0ff5319a39fa28a0bbf795c38c1298b73f61"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/10-escrow-receipt-360.png",
+      "source": "outputs/fom-implementation/10-escrow-receipt-360.png",
+      "category": "archive/fom-implementation",
+      "bytes": 49383,
+      "sha256": "2ea836d9544dc55f68d3fcfa9a09bba05fe6a9d9a4a92101b7c67ea8be9eb536"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/11-acceptance-receipt-360.png",
+      "source": "outputs/fom-implementation/11-acceptance-receipt-360.png",
+      "category": "archive/fom-implementation",
+      "bytes": 47080,
+      "sha256": "88fa40915a6f40bc9da3af2a38f3af463cc838d26047a0c84f8dcd3f8816ad9d"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/12-counter-display-360.png",
+      "source": "outputs/fom-implementation/12-counter-display-360.png",
+      "category": "archive/fom-implementation",
+      "bytes": 34399,
+      "sha256": "c5e2961f2b2da9f275f34c0b43cf1a12f8060200f913e013955e18767e053ce4"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/13-restored-activity-360.png",
+      "source": "outputs/fom-implementation/13-restored-activity-360.png",
+      "category": "archive/fom-implementation",
+      "bytes": 32893,
+      "sha256": "ba07b582f37cc76964ed652c58f70e2471b3991f59c80858fce8985498315822"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/14-admin-desktop.png",
+      "source": "outputs/fom-implementation/14-admin-desktop.png",
+      "category": "archive/fom-implementation",
+      "bytes": 74386,
+      "sha256": "28bdbebbce3114c00097640a799a12ff552a54d0a091d9b1e2adb08f3e8a3a70"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/15-report-paused-360.png",
+      "source": "outputs/fom-implementation/15-report-paused-360.png",
+      "category": "archive/fom-implementation",
+      "bytes": 98545,
+      "sha256": "3470c5cb740a1ef8c0831370c7963f72e8a4070427c26e14aff6e30a7780476b"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/16-split-offer-360.png",
+      "source": "outputs/fom-implementation/16-split-offer-360.png",
+      "category": "archive/fom-implementation",
+      "bytes": 120226,
+      "sha256": "2ee194ede57c0c1a7f10392d01bbba1740872650448d17491b553b53a6747cd4"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/17-split-confirmed-360.png",
+      "source": "outputs/fom-implementation/17-split-confirmed-360.png",
+      "category": "archive/fom-implementation",
+      "bytes": 69627,
+      "sha256": "ab3dd3070a007340277db68d820262ffeedaa71f28f56f5573abc57d5eecc5db"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/18-public-outcome-360.png",
+      "source": "outputs/fom-implementation/18-public-outcome-360.png",
+      "category": "archive/fom-implementation",
+      "bytes": 82125,
+      "sha256": "a0cde6ef66fed065484bc284adc86e75401c1f3755e8980e912880961464d742"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/19-resume-original-order-360.png",
+      "source": "outputs/fom-implementation/19-resume-original-order-360.png",
+      "category": "archive/fom-implementation",
+      "bytes": 31127,
+      "sha256": "a5024fde2ea8f7eb6bd0d330a8fa97cd6b3a96cffc1324912d5f0e1477ab5055"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/20-admin-audit.png",
+      "source": "outputs/fom-implementation/20-admin-audit.png",
+      "category": "archive/fom-implementation",
+      "bytes": 63760,
+      "sha256": "a5068e9d046d5fba6b55c7350ef1f232d99f40d55e00e2bd50010265846d0fdd"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/21-admin-reconciliation.png",
+      "source": "outputs/fom-implementation/21-admin-reconciliation.png",
+      "category": "archive/fom-implementation",
+      "bytes": 93358,
+      "sha256": "c312778adb479c5de2980a7ed9e4de5846ff42fe41b644114c15bf3ad18de930"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/22-staff-case-evidence.png",
+      "source": "outputs/fom-implementation/22-staff-case-evidence.png",
+      "category": "archive/fom-implementation",
+      "bytes": 48903,
+      "sha256": "31e74bfd678eccf2682491ef09ac69242f4ffeab78aff838a3845741585e6310"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/failure.png",
+      "source": "outputs/fom-implementation/failure.png",
+      "category": "archive/fom-implementation",
+      "bytes": 34901,
+      "sha256": "7bdac1244557976a6f4ddae763cb57efede78678d4bbb62e2df3c9291543f438"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/reference-compact-buyer.png",
+      "source": "outputs/fom-implementation/reference-compact-buyer.png",
+      "category": "archive/fom-implementation",
+      "bytes": 167324,
+      "sha256": "4e2cff2165ec77434e76d484bb89bed327281a4ff028ceee4af53d8cb90cc8fa"
+    },
+    {
+      "path": "screenshots/archive/fom-implementation/reference-soft-held.png",
+      "source": "outputs/fom-implementation/reference-soft-held.png",
+      "category": "archive/fom-implementation",
+      "bytes": 123985,
+      "sha256": "1de6fb5c3b14f0965ec573b8b3285d59c5fcf433c31d382d74080a17a7342181"
+    },
+    {
+      "path": "screenshots/archive/receipt-mvp/01-escrow.png",
+      "source": "outputs/receipt-mvp/01-escrow.png",
+      "category": "archive/receipt-mvp",
+      "bytes": 21801,
+      "sha256": "58a2797022a742358e89bdab8f9a433ac6ac91ee4c524c0cf62684faec6d7986"
+    },
+    {
+      "path": "screenshots/archive/receipt-mvp/02-escrow-review.png",
+      "source": "outputs/receipt-mvp/02-escrow-review.png",
+      "category": "archive/receipt-mvp",
+      "bytes": 38531,
+      "sha256": "5755322910845389255a7d85381602a25171f52bcfd6b95692e38ec610bd6948"
+    },
+    {
+      "path": "screenshots/archive/receipt-mvp/03-es-share.png",
+      "source": "outputs/receipt-mvp/03-es-share.png",
+      "category": "archive/receipt-mvp",
+      "bytes": 40554,
+      "sha256": "2b70d658aba9a11af62aba425206c57523453a4ff8598f37c696b2d544109c2c"
+    },
+    {
+      "path": "screenshots/archive/receipt-mvp/04-payer-methods.png",
+      "source": "outputs/receipt-mvp/04-payer-methods.png",
+      "category": "archive/receipt-mvp",
+      "bytes": 30553,
+      "sha256": "1e56f5a33e9e271282efd2a2f1e23d1ef91c435ed7cce3da0aac6f3808e9b935"
+    },
+    {
+      "path": "screenshots/archive/receipt-mvp/05-payment-instructions.png",
+      "source": "outputs/receipt-mvp/05-payment-instructions.png",
+      "category": "archive/receipt-mvp",
+      "bytes": 57230,
+      "sha256": "d75a0048a848bf65283bd8ba9903c7ee7b8fe2026385a840af5ee27f97aed030"
+    },
+    {
+      "path": "screenshots/archive/receipt-mvp/06-receipt-sent.png",
+      "source": "outputs/receipt-mvp/06-receipt-sent.png",
+      "category": "archive/receipt-mvp",
+      "bytes": 45563,
+      "sha256": "32c98d1af733fc24397a185c32d29152314d6fb053287ab1249cfe99596eee70"
+    },
+    {
+      "path": "screenshots/archive/receipt-mvp/07-buying-history.png",
+      "source": "outputs/receipt-mvp/07-buying-history.png",
+      "category": "archive/receipt-mvp",
+      "bytes": 25333,
+      "sha256": "b835986bf9fa4b3033628b2e62419ed6b4d70e02f8fcd883e45d3a887ef53aca"
+    },
+    {
+      "path": "screenshots/archive/receipt-mvp/08-py-request.png",
+      "source": "outputs/receipt-mvp/08-py-request.png",
+      "category": "archive/receipt-mvp",
+      "bytes": 37799,
+      "sha256": "cf88af06a41189a4827e03155c440d69b827b4edd24b75e3286c85a445604e56"
+    },
+    {
+      "path": "screenshots/archive/receipt-mvp/09-active-payment.png",
+      "source": "outputs/receipt-mvp/09-active-payment.png",
+      "category": "archive/receipt-mvp",
+      "bytes": 29080,
+      "sha256": "947cb93ea2be27833178bf5c8b5965ef8fe4add0b813f796e606d8d7f22ebdae"
+    },
+    {
+      "path": "screenshots/archive/receipt-mvp/10-payment-history.png",
+      "source": "outputs/receipt-mvp/10-payment-history.png",
+      "category": "archive/receipt-mvp",
+      "bytes": 28562,
+      "sha256": "e5316a56051a5539e59bc231b3362a85fd04362ed6c510da74b964f8beac85dd"
+    },
+    {
+      "path": "screenshots/archive/receipt-mvp/11-shop-contact-team.png",
+      "source": "outputs/receipt-mvp/11-shop-contact-team.png",
+      "category": "archive/receipt-mvp",
+      "bytes": 31382,
+      "sha256": "ff25a9def8b322b50fe5789ac07abf06a215890446789be1289ce7c813408515"
+    },
+    {
+      "path": "screenshots/archive/receipt-mvp/12-scanner-fallback.png",
+      "source": "outputs/receipt-mvp/12-scanner-fallback.png",
+      "category": "archive/receipt-mvp",
+      "bytes": 41069,
+      "sha256": "723f91421e0d89425e265ada53be0d579bdc1e6691b8a566b135e759f0b3912b"
+    },
+    {
+      "path": "screenshots/archive/receipt-mvp/entry-qr.png",
+      "source": "outputs/receipt-mvp/entry-qr.png",
+      "category": "archive/receipt-mvp",
+      "bytes": 4223,
+      "sha256": "5d9eab7c870fbb1b28c63b05c5396d3b9caf3f9dd2c9d9439d0a26aa3f1f395c"
+    },
+    {
+      "path": "screenshots/archive/01-operations/01-owner-review.png",
+      "source": "outputs/product-v2/workstreams/01-operations/screenshots/01-owner-review.png",
+      "category": "archive/01-operations",
+      "bytes": 27677,
+      "sha256": "eccea8ee382fb25638f0eee4692f67e379d43ffbf25160eda30cebbeb30b6ae4"
+    },
+    {
+      "path": "screenshots/archive/01-operations/02-share-request.png",
+      "source": "outputs/product-v2/workstreams/01-operations/screenshots/02-share-request.png",
+      "category": "archive/01-operations",
+      "bytes": 37965,
+      "sha256": "09b7268394e8e074ba302b9c477490745e36131f092031904d5e87f76d2291b5"
+    },
+    {
+      "path": "screenshots/archive/01-operations/03-customer-payment.png",
+      "source": "outputs/product-v2/workstreams/01-operations/screenshots/03-customer-payment.png",
+      "category": "archive/01-operations",
+      "bytes": 24681,
+      "sha256": "79ac446d9a448a94f992f9559fd32f87f4dbb25e8e2d95499fd4c19bb67014f5"
+    },
+    {
+      "path": "screenshots/archive/01-operations/04-collection-confirmed.png",
+      "source": "outputs/product-v2/workstreams/01-operations/screenshots/04-collection-confirmed.png",
+      "category": "archive/01-operations",
+      "bytes": 26232,
+      "sha256": "ed1007966916f41d8b3dc358d8703a25a6f320dbc55ec31ea4aeaea6c16ee8c8"
+    },
+    {
+      "path": "screenshots/archive/01-operations/05-payout-pending.png",
+      "source": "outputs/product-v2/workstreams/01-operations/screenshots/05-payout-pending.png",
+      "category": "archive/01-operations",
+      "bytes": 26953,
+      "sha256": "ba12322a3d33e483e3e585d65c0c6bead9b887e26c8f7dd20a324894904e74df"
+    },
+    {
+      "path": "screenshots/archive/01-operations/06-needs-attention.png",
+      "source": "outputs/product-v2/workstreams/01-operations/screenshots/06-needs-attention.png",
+      "category": "archive/01-operations",
+      "bytes": 27430,
+      "sha256": "37138433bb950ea6c6071c43313b3a4ed2741d05398c3d890a222e7b1c8ac59f"
+    },
+    {
+      "path": "screenshots/archive/01-operations/07-paid-receipt.png",
+      "source": "outputs/product-v2/workstreams/01-operations/screenshots/07-paid-receipt.png",
+      "category": "archive/01-operations",
+      "bytes": 23705,
+      "sha256": "584e84d54caecdb347b950a5f37fe424b78a4c2ce04e964dd0c3ab75e1d759fe"
+    },
+    {
+      "path": "screenshots/archive/01-operations/08-shop-qr.png",
+      "source": "outputs/product-v2/workstreams/01-operations/screenshots/08-shop-qr.png",
+      "category": "archive/01-operations",
+      "bytes": 36369,
+      "sha256": "b9f2096871604bae1c0fab4da568dce4aeb7b71197b87018884b31d65c1aad8f"
+    },
+    {
+      "path": "screenshots/archive/01-operations/09-private-activity.png",
+      "source": "outputs/product-v2/workstreams/01-operations/screenshots/09-private-activity.png",
+      "category": "archive/01-operations",
+      "bytes": 27936,
+      "sha256": "fa8278526b076bbe04a6c03fe31145f784828df0881ced5d5caf06e79ba7d86b"
+    },
+    {
+      "path": "screenshots/archive/01-operations/10-recipient-paid.png",
+      "source": "outputs/product-v2/workstreams/01-operations/screenshots/10-recipient-paid.png",
+      "category": "archive/01-operations",
+      "bytes": 22182,
+      "sha256": "82226c12926f4724057970de57ecd7e0825da8db36519d4d823e9097585eda51"
+    },
+    {
+      "path": "screenshots/archive/01-operations/11-receipt-360px.png",
+      "source": "outputs/product-v2/workstreams/01-operations/screenshots/11-receipt-360px.png",
+      "category": "archive/01-operations",
+      "bytes": 35609,
+      "sha256": "2b3119134e1ea61eb3f9cc9500f29de96b6d67344c80220bd3a60bf63b9c0370"
+    },
+    {
+      "path": "screenshots/archive/01-operations/preview-board.png",
+      "source": "outputs/product-v2/workstreams/01-operations/screenshots/preview-board.png",
+      "category": "archive/01-operations",
+      "bytes": 343377,
+      "sha256": "07cba230abef8b1d7cbe0e6b4a59358e38702964c561f1ec7c0689a42eba54cb"
+    },
+    {
+      "path": "screenshots/archive/02-customer-ux/held-360.png",
+      "source": "outputs/product-v2/workstreams/02-customer-ux/screenshots/held-360.png",
+      "category": "archive/02-customer-ux",
+      "bytes": 23154,
+      "sha256": "df851a2518fbf9e0f8ad418cbf4f77175e7a4f5bd7b7f7e335ebc6a69aa4d943"
+    },
+    {
+      "path": "screenshots/archive/02-customer-ux/home-desktop.png",
+      "source": "outputs/product-v2/workstreams/02-customer-ux/screenshots/home-desktop.png",
+      "category": "archive/02-customer-ux",
+      "bytes": 31748,
+      "sha256": "04ba64ebc26a6e53e9281ed2bcbb6b46246ff6b9dd7d577a3282130703340da7"
+    },
+    {
+      "path": "screenshots/archive/02-customer-ux/pay-360.png",
+      "source": "outputs/product-v2/workstreams/02-customer-ux/screenshots/pay-360.png",
+      "category": "archive/02-customer-ux",
+      "bytes": 26613,
+      "sha256": "5a4baf1549918c99640e7f2af8c0d944623e3c6629a2657a7a0082c90a6244e8"
+    },
+    {
+      "path": "screenshots/archive/02-customer-ux/payout-pending-360.png",
+      "source": "outputs/product-v2/workstreams/02-customer-ux/screenshots/payout-pending-360.png",
+      "category": "archive/02-customer-ux",
+      "bytes": 22663,
+      "sha256": "c3cd89361b0c2bb7980b15c4a16275b28a933a5fa28c9497ac9b8c48ea5f4c78"
+    },
+    {
+      "path": "screenshots/archive/02-customer-ux/review-360.png",
+      "source": "outputs/product-v2/workstreams/02-customer-ux/screenshots/review-360.png",
+      "category": "archive/02-customer-ux",
+      "bytes": 31024,
+      "sha256": "0c2d5c9ed0e4cd5c671d2850c25085e3dc90d4993b89dc1e6b2e96dd1127f787"
+    },
+    {
+      "path": "screenshots/archive/03-admin/desktop-queue.jpg",
+      "source": "outputs/product-v2/workstreams/03-admin/screenshots/desktop-queue.jpg",
+      "category": "archive/03-admin",
+      "bytes": 137262,
+      "sha256": "5cf274cc409a3941010399ba27681f961e7650a31f139393c7b35c3c8dfedaaa"
+    },
+    {
+      "path": "screenshots/archive/03-admin/desktop-view.jpg",
+      "source": "outputs/product-v2/workstreams/03-admin/screenshots/desktop-view.jpg",
+      "category": "archive/03-admin",
+      "bytes": 59852,
+      "sha256": "7dc699717d6e4d2e047ef65974ad02177ba41183e81a8c1742d683c5efef24b8"
+    },
+    {
+      "path": "screenshots/archive/03-admin/mobile-detail.jpg",
+      "source": "outputs/product-v2/workstreams/03-admin/screenshots/mobile-detail.jpg",
+      "category": "archive/03-admin",
+      "bytes": 73766,
+      "sha256": "1b8112449dd173b0172e0c1ee66ab25377c217d36dd32249572946ce862a02ef"
+    },
+    {
+      "path": "screenshots/archive/03-admin/mobile-queue.jpg",
+      "source": "outputs/product-v2/workstreams/03-admin/screenshots/mobile-queue.jpg",
+      "category": "archive/03-admin",
+      "bytes": 69398,
+      "sha256": "231adadaaae8fde25e8c7f7bbdf7d9bbada2fbb5d529ba7b1153f5b166a7bb7d"
+    },
+    {
+      "path": "screenshots/archive/03-admin/second-approval.jpg",
+      "source": "outputs/product-v2/workstreams/03-admin/screenshots/second-approval.jpg",
+      "category": "archive/03-admin",
+      "bytes": 62086,
+      "sha256": "c3c9b0dac084ed9f366ef9efb57b1f278f8bad4b3963ca34048ac9d92309b68b"
+    },
+    {
+      "path": "screenshots/archive/04-integration/customer-mobile-app.png",
+      "source": "outputs/product-v2/workstreams/04-integration/screenshots/customer-mobile-app.png",
+      "category": "archive/04-integration",
+      "bytes": 45851,
+      "sha256": "857641dce9bc669ff1bf965b405d6a438e0d624606b67a2a99cbf4f631de6a91"
+    },
+    {
+      "path": "screenshots/archive/04-integration/desktop-admin-separated.png",
+      "source": "outputs/product-v2/workstreams/04-integration/screenshots/desktop-admin-separated.png",
+      "category": "archive/04-integration",
+      "bytes": 48010,
+      "sha256": "f5f32a89ef643ae02fac07f700fd3511d3e5c51cc1b598ff0414e2d785d4a3ee"
+    },
+    {
+      "path": "screenshots/archive/04-integration/home-360.png",
+      "source": "outputs/product-v2/workstreams/04-integration/screenshots/home-360.png",
+      "category": "archive/04-integration",
+      "bytes": 36802,
+      "sha256": "1eee4de24f09037bb24f99c17a5b0f9150d852231a024cb82886269f7b5a0d5e"
+    },
+    {
+      "path": "screenshots/archive/04-integration/home.png",
+      "source": "outputs/product-v2/workstreams/04-integration/screenshots/home.png",
+      "category": "archive/04-integration",
+      "bytes": 39029,
+      "sha256": "ccd4437047e0248a5c49ac3b7adda13b38c4ad4f8b61161ae8b1043e08b44f4e"
+    },
+    {
+      "path": "screenshots/archive/04-integration/integrated-360-final.png",
+      "source": "outputs/product-v2/workstreams/04-integration/screenshots/integrated-360-final.png",
+      "category": "archive/04-integration",
+      "bytes": 45258,
+      "sha256": "35223dd732387ffde5b01a446cb03de12bacfb69db9cf4fe3b39c47f3e1de873"
+    },
+    {
+      "path": "screenshots/archive/04-integration/integrated-home-final.png",
+      "source": "outputs/product-v2/workstreams/04-integration/screenshots/integrated-home-final.png",
+      "category": "archive/04-integration",
+      "bytes": 47965,
+      "sha256": "eaee1cc9bf3869899c29e8cfeab68febf20d7f7b73461685022a5406d92c2e7d"
+    },
+    {
+      "path": "screenshots/archive/04-integration/integrated-staff-final.png",
+      "source": "outputs/product-v2/workstreams/04-integration/screenshots/integrated-staff-final.png",
+      "category": "archive/04-integration",
+      "bytes": 49599,
+      "sha256": "158e76585453bf2a9bc738387b28d1b6e48b3d30edca16fbaaba0cf23b94f941"
+    },
+    {
+      "path": "screenshots/archive/04-integration/partial-settlement-final.png",
+      "source": "outputs/product-v2/workstreams/04-integration/screenshots/partial-settlement-final.png",
+      "category": "archive/04-integration",
+      "bytes": 38031,
+      "sha256": "020725e5125cd3292074afc7176654cec7dd705654597cebb6f56f4e322506e0"
+    },
+    {
+      "path": "screenshots/archive/04-integration/staff-workspace.png",
+      "source": "outputs/product-v2/workstreams/04-integration/screenshots/staff-workspace.png",
+      "category": "archive/04-integration",
+      "bytes": 51387,
+      "sha256": "3cf927995954dcfe3ca9b1afa62b76453b46a26c971ba99cc8e059ef5e4f1835"
+    },
+    {
+      "path": "screenshots/archive/05-motion/completed-360.png",
+      "source": "outputs/product-v2/workstreams/05-motion/screenshots/completed-360.png",
+      "category": "archive/05-motion",
+      "bytes": 2486,
+      "sha256": "631f5468d7bfdc60f9a5eba82ab4494fc045b15762a51fa434845642d412d04c"
+    },
+    {
+      "path": "screenshots/archive/05-motion/component-desktop.png",
+      "source": "outputs/product-v2/workstreams/05-motion/screenshots/component-desktop.png",
+      "category": "archive/05-motion",
+      "bytes": 15827,
+      "sha256": "c9f897e726d910257b83d995a44c94a35de4ca0e19154e640d4193374452be7f"
+    },
+    {
+      "path": "screenshots/archive/05-motion/expanded-research.png",
+      "source": "outputs/product-v2/workstreams/05-motion/screenshots/expanded-research.png",
+      "category": "archive/05-motion",
+      "bytes": 65549,
+      "sha256": "10e1ba86b9fbe1a0e48ef022168145a95f21eed83a1d6cbc7f5e983af21717f8"
+    },
+    {
+      "path": "screenshots/archive/05-motion/held-390.png",
+      "source": "outputs/product-v2/workstreams/05-motion/screenshots/held-390.png",
+      "category": "archive/05-motion",
+      "bytes": 25877,
+      "sha256": "f57a71bfa47056f5d34ce8140c1c8f40924ad28fdc74c53e1b030cc6db750db7"
+    },
+    {
+      "path": "screenshots/archive/05-motion/recovery-360.png",
+      "source": "outputs/product-v2/workstreams/05-motion/screenshots/recovery-360.png",
+      "category": "archive/05-motion",
+      "bytes": 23429,
+      "sha256": "cad6d4d52b5ee8e7771f3b5b69498f40d67103b8b251c39e4ebdcf8acc3265cf"
+    },
+    {
+      "path": "screenshots/archive/escrow-figma/deals-review.png",
+      "source": "outputs/escrow-figma/deals-review.png",
+      "category": "archive/escrow-figma",
+      "bytes": 347490,
+      "sha256": "2fb159d66c8f1c2af783048bbee40a5c250d7995c4d5d8da5f6178a588f1155c"
+    },
+    {
+      "path": "screenshots/archive/escrow-figma/desktop-review.png",
+      "source": "outputs/escrow-figma/desktop-review.png",
+      "category": "archive/escrow-figma",
+      "bytes": 127462,
+      "sha256": "233552d38388b344e2eb60d455639bf9f29932b81bbc3228ae970becb9d76257"
+    },
+    {
+      "path": "screenshots/archive/escrow-figma/payment-review.png",
+      "source": "outputs/escrow-figma/payment-review.png",
+      "category": "archive/escrow-figma",
+      "bytes": 328356,
+      "sha256": "b01efcc0561c7e705548c38bec666e73dca35cec934a07323b55c0f200475967"
+    },
+    {
+      "path": "screenshots/archive/escrow-figma/separate-deals-review.png",
+      "source": "outputs/escrow-figma/separate-deals-review.png",
+      "category": "archive/escrow-figma",
+      "bytes": 281461,
+      "sha256": "5d382cf092e8243c0b27325c8a1da7d515ba0d5206a1021222f04ef122f28211"
+    },
+    {
+      "path": "screenshots/archive/escrow-figma/setup-review.png",
+      "source": "outputs/escrow-figma/setup-review.png",
+      "category": "archive/escrow-figma",
+      "bytes": 318498,
+      "sha256": "ee0eb818ddd104aaa7078001acfed8d24a46cd9cbcc76ce3a20756033adcd766"
+    },
+    {
+      "path": "screenshots/archive/escrow-reference-layout/animated-preview.jpg",
+      "source": "outputs/escrow-reference-layout/animated-preview.jpg",
+      "category": "archive/escrow-reference-layout",
+      "bytes": 73970,
+      "sha256": "371477e7aef581619e454aafe9dff988aed585406465aa5fa970c76c47767c39"
+    },
+    {
+      "path": "screenshots/archive/escrow-reference-layout/buyer-preview.jpg",
+      "source": "outputs/escrow-reference-layout/buyer-preview.jpg",
+      "category": "archive/escrow-reference-layout",
+      "bytes": 79482,
+      "sha256": "64f91d69af6cff09caf5442ef74cd851b666bbf07b23270ca24ac8af277d47d3"
+    },
+    {
+      "path": "screenshots/archive/escrow-reference-layout/reference-layout-preview.jpg",
+      "source": "outputs/escrow-reference-layout/reference-layout-preview.jpg",
+      "category": "archive/escrow-reference-layout",
+      "bytes": 90102,
+      "sha256": "c81118aaab85836f6297de4bd47d834b69a0c6f5de3785182387b53c01a46f3e"
+    },
+    {
+      "path": "screenshots/archive/escrow-soft-five/five-screen-preview.png",
+      "source": "outputs/escrow-soft-five/five-screen-preview.png",
+      "category": "archive/escrow-soft-five",
+      "bytes": 168009,
+      "sha256": "538ee955ec9e4287092df5afb8fcb88e8979381dedb9d27e38935cc8e5e98eba"
+    },
+    {
+      "path": "screenshots/archive/escrow-soft-flow/buyer-flow.jpg",
+      "source": "outputs/escrow-soft-flow/buyer-flow.jpg",
+      "category": "archive/escrow-soft-flow",
+      "bytes": 150777,
+      "sha256": "fa5b7c5d4f7f8caf40acaf60c9ac559fca5d4f655323e4f10acc28d52a964c29"
+    },
+    {
+      "path": "screenshots/archive/escrow-soft-flow/deals-access.jpg",
+      "source": "outputs/escrow-soft-flow/deals-access.jpg",
+      "category": "archive/escrow-soft-flow",
+      "bytes": 91411,
+      "sha256": "ff481e6d3d011901fb5965604f55ab9082c643965f1b6d2a9eff3c6bfd8ed020"
+    },
+    {
+      "path": "screenshots/archive/escrow-soft-flow/delivery-support.jpg",
+      "source": "outputs/escrow-soft-flow/delivery-support.jpg",
+      "category": "archive/escrow-soft-flow",
+      "bytes": 221286,
+      "sha256": "eb2ca450c7a0e2353b67d885d5c136a8b7e8dda001c3885d562da9c29f7070f2"
+    },
+    {
+      "path": "screenshots/archive/escrow-soft-flow/seller-flow.jpg",
+      "source": "outputs/escrow-soft-flow/seller-flow.jpg",
+      "category": "archive/escrow-soft-flow",
+      "bytes": 204301,
+      "sha256": "11669700bbdc97ae72568b020b690e5c22682a6e4d328bd4489d1565c3c97af3"
+    },
+    {
+      "path": "screenshots/archive/escrow-soft-flow/welcome.jpg",
+      "source": "outputs/escrow-soft-flow/welcome.jpg",
+      "category": "archive/escrow-soft-flow",
+      "bytes": 62024,
+      "sha256": "52a12cc989298584ab1a2eeac3954101654cab62287916e4795e3f174ca4ba8a"
+    }
+  ]
+}

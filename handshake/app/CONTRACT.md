@@ -1,6 +1,26 @@
 # Final shared application contract
 
+## Revised receipt MVP — 23 October 2026
+
+The latest user direction supersedes the earlier customer navigation and automatic-provider demonstration. The normal index now has Escrow, Payment and Enter code, with no Account tab. Receipt submission records Marked as sent, not verified payment. Escrow adds seller delivery photo and buyer received confirmation; one-time payments archive after submission. Shop setup saves an application and ends at Contact team without external contact. ES/PY/SP codes and camera/image QR scanning are supported. Existing financial records, sessions and staff controls are preserved in the legacy view. New nonfinancial states use migration 006 and `/api/mvp/*`; they never book a ledger entry or dispatch money. Full revised flow and current validation: `outputs/receipt-mvp/HANDOFF.md` at workspace root.
+
+
 22 October 2026. This is the authoritative integration decision for Tracks 1–3 and 5. Their browser fixtures are preserved as references and are not financial databases.
+
+## FOM screen implementation — current additions
+
+The customer/staff product is **FOM — Future of Myanmar**. Historical table names, cookie/header names, recovery keys, public resource IDs and existing saved records remain valid. The current screen specification governs presentation; older sections below describe retained legacy simulation behavior where explicitly identified.
+
+- New requests/shops use `merchant_setup=true` and the private `/api/merchant` profile. Fictional approval, account mask, configuration version and authorization profile are saved once. Shop name and payment purpose are retained. Updating the profile changes future shop orders; existing orders retain their snapshots. Legacy records remain readable without rewriting their financial model.
+- `merchant_direct` collection posts to `merchant_provider_clearing`, `merchant_settlement_due` and `merchant_fee_due`, not platform cash or escrow. Automatic `settlement` jobs are distinct from escrow seller `payout` jobs. A confirmed collection produces the private customer receipt immediately; settlement may still be pending/failed/unknown. Confirmed settlement closes the provider-held merchant clearing entries. Original-source refunds before settlement, following definitive failure and independent approval, reverse those merchant obligations; they do not invent platform custody.
+- `/api/records/:shop/counter-request` is an idempotent private owner command creating one fixed-amount, single-use browser checkout request under the shop. The customer must use their own session to authorize. The selected simulator has no bank-payable QR payload; counter display therefore shows an accurately captioned browser-entry QR. It never creates a private receipt session on another phone.
+- Private request projection includes `resume_payment_id` only for its existing payer. Public visitors receive neither that ID nor another payer's receipt. Shop browser context also remembers its active order and resumes it on Back.
+- Drafts retain typed flags, a local/server update marker, creation command identity and optional PNG/JPEG item photo. Newer local typing wins over an older debounced server save. Photo types and size are checked; uploaded case evidence retains its existing private permissions.
+- Browser mutation payloads persist across transport failure/refresh until authoritative success or a definitive rejection. Retry reuses the original command identity, including its frozen version/body. Definitively rejected commands can be retried after refreshing state. Pending/unknown money instructions are never silently replaced.
+- Seller stages: Item → Amount → Delivery/checking → Review → Share. `deliver` can save a short seller delivery note; it does not release funds. Existing reports, independent approvals, exact split consent and separately recoverable legs remain authoritative.
+- Customer composition uses the original static elephant. No approved performance clip was available; no paid generation was attempted. Staff navigation and case tabs reuse the original queues, permissions, records and audit surface.
+
+Limitations: simulation only; no bank-payable QR, real merchant verification, external statements/batch import, production recovery/notifications or live custody/settlement. The reconciliation screen explicitly distinguishes its local adapter checks from external reports. Normalized real provider settlement batches and production onboarding remain future integration work.
 
 ## Stack and authority
 
